@@ -1,8 +1,10 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Room {
 	private boolean isOpen;
-	public Item unnamed_Item_;
+	private ArrayList<Item> items;
 
 	public boolean isOpen() {
 		throw new UnsupportedOperationException();

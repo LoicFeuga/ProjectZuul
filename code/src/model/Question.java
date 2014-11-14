@@ -3,7 +3,7 @@ package model;
 public class Question {
 	private boolean answer;
 	private String question;
-	public QCM unnamed_QCM_;
+	private QCM createur;
 
 	public String getQuestion() {
 		return this.question;

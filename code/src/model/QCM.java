@@ -1,9 +1,11 @@
 package model;
 
+import java.util.ArrayList;
+
 public class QCM {
 	private int mark;
-	public Question unnamed_Question_;
-	public Exam unnamed_Exam_;
+	private ArrayList<Question> questions;
+	private Exam createur;
 
 	public int getMark() {
 		return this.mark;
