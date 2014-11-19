@@ -14,7 +14,8 @@ public class Exam extends Lecture {
 	 * Il permet de tester la class Exam et les liaisons qu'il y a avec 
 	 *   QCM et question
 	 */
-	public Exam(){
+	public Exam(String nom){
+		super(nom);
 		energyNeeded = 0;
 		qcm = new QCM();
 	}
@@ -25,7 +26,8 @@ public class Exam extends Lecture {
 	 * @param energyNeeded Energie minimum pour passer l'examene
 	 * @param qcm qcm de l'examen
 	 */
-	public Exam(int energyNeeded, QCM qcm){
+	public Exam(int energyNeeded, QCM qcm,String nom){
+		super(nom);
 		this.energyNeeded = energyNeeded;
 		this.qcm = qcm;
 	}

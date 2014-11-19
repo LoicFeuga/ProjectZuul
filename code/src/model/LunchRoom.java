@@ -2,6 +2,11 @@ package model;
 
 public class LunchRoom extends Room {
 
+	public LunchRoom(String description) {
+		super(description);
+		// TODO Auto-generated constructor stub
+	}
+
 	public void drinkCoffee() {
 		throw new UnsupportedOperationException();
 	}

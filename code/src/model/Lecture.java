@@ -1,9 +1,16 @@
 package model;
 
 public class Lecture extends Room {
+
 	private String currentLecture;
 	private boolean catchStudent;
 
+
+	public Lecture(String description) {
+		super(description);
+		// TODO Auto-generated constructor stub
+	}
+	
 	public boolean getCatchStudent() {
 		return this.catchStudent;
 	}
