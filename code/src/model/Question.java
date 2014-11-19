@@ -21,7 +21,11 @@ public class Question {
 	 * Hameçonage sur le QCM contenant cette question
 	 */
 	private QCM createur;
-
+	/**
+	 * Réponse du Student à cette question
+	 */
+	private boolean answerGave;
+	
 	/**
 	 * Constructeur par defaut,
 	 * Il initialise une question simple afin de tester la classe
@@ -84,7 +88,32 @@ public class Question {
 		else
 			return false;
 	}
+	
+	
+	/**
+	 * Méthode answer,
+	 * Elle permet de répondre à la question posée
+	 * @param answer réponse à la question
+	 */
+	public void answer(boolean myanswer){
+		this.answerGave = myanswer;
+	}
 
+	/**
+	 * Méthode isCorrect,
+	 * Elle vérifie si la réponse donnée correspond bien à la réponse de la question
+	 * @return true si correct 
+	 * 			else sinon
+	 */
+	public boolean isCorrect(){
+		if(answerGave == answer){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
 	/*
 	 * 
 	 * 
