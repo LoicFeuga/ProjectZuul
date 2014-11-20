@@ -1,8 +1,24 @@
 package model;
 
-public class Item {
+public abstract class Item {
 	public Student owner;
 	public Room position;
 	
+	public Student getOwner() {
+		return owner;
+	}
+	public void setOwner(Student owner) {
+		this.owner = owner;
+	}
+	public Room getPosition() {
+		return position;
+	}
+	public void setPosition(Room position) {
+		this.position = position;
+	}
+	
+	
+	
+
 
 }
