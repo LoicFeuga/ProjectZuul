@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Student {
 	private int energyLevel;
 	private ArrayList<Item> listItem;
+	private ArrayList<Lecture> listLecture;
 
 	public int getEnergyLevel() {
 		return energyLevel;
@@ -12,6 +13,10 @@ public class Student {
 
 	public ArrayList<Item> getListItem() {
 		return listItem;
+	}
+	
+	public ArrayList<Lecture> getListLecture(){
+		return listLecture;
 	}
 
 	public Student(){
@@ -24,6 +29,14 @@ public class Student {
 	}
 	public void deleteItem(Item delete){
 		listItem.remove(delete);
+	}
+	
+	public void followLecture(Lecture lecture){
+		listLecture.add(lecture);
+	}
+	
+	public void forgetLecture(Lecture lecture){
+		listLecture.remove(lecture);
 	}
 	
 	public void increaseEnergy(int number) {
