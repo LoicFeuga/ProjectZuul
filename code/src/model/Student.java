@@ -22,6 +22,8 @@ public class Student {
 	public Student(){
 		energyLevel = 100;
 		listItem = new ArrayList<Item>();
+		listLecture = new ArrayList<>();
+				
 	}
 	
 	public void getItem(Item item){
@@ -48,6 +50,14 @@ public class Student {
 		
 		for(int i = 0 ; i < listItem.size(); i++){
 			System.out.println("Item "+(i+1)+" : "+listItem.get(i).toString());
+		}
+	}
+	
+	public void printLectureFollowed(){
+		if(listLecture.size() == 0 ) System.out.println("Aucune leçon suivie à ce jour");
+		
+		for(int i = 0 ; i < listLecture.size(); i++){
+			System.out.println("Lecture"+(i+1)+" : "+listLecture.get(i).toString());
 		}
 	}
 	
