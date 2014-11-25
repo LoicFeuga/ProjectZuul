@@ -1,12 +1,12 @@
 package controler;
 
-import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import model.Item;
+import com.sun.org.apache.bcel.internal.generic.LLOAD;
 
+import model.Item;
 import model.rooms.Lecture;
 import model.LectureItem;
 import model.Student;
@@ -37,11 +37,13 @@ public class Controler {
 		Lecture l2 = new Lecture("A fake description2","TD de POO2");
 		Lecture l3 = new Lecture("A fake description3","TD de AA");
 		Lecture lec = new Lecture("Description","Current lesson");
+		Lecture lec2 = new Lecture("Description2","Current lesson");
 
 		listLecture.put("POO0",l);
 		listLecture.put("POO1",l2);
 		listLecture.put("AA",l3);
 		listLecture.put("T",lec);
+		listLecture.put("T2",lec2);
 
 	}
 
@@ -84,29 +86,54 @@ public class Controler {
 	//Need Test
 	public Lecture getRandomLectureThanStudentDontKnow(){
 		int rand = 0;
-		
+		String chaine = null;
 		do{
-		int max  =listLecture.size(); int min = 0;
-		//min et max inclu
-		 rand = min + (int)(Math.random() * ((max - min) + 1));
+			int max  =listLecture.size(); int min = 0;
+			//min et max inclu
+			rand = min + (int)(Math.random() * ((max - min) + 1));
+			
+			Iterator<String> i = listLecture.keySet().iterator();
+
+
+			while(i.hasNext() || rand >= 0){
+				rand--;
+				chaine = i.next();
+				if(chaine.contains("POO")){
+					student.followLecture(listLecture.get(chaine));
+				}
+			}
+			
 		}while(student.know(listLecture.get(rand)));
-		
+
 
 		return listLecture.get(rand);
 	}
-	
-	//Need Test
+
+	//Test OK
 	public Lecture getRandomLectureThanStudentKnow(){
 		int rand = 0;
-		
+		String chaine = null;
 		do{
-		int max  =listLecture.size(); int min = 0;
-		//min et max inclu
-		 rand = min + (int)(Math.random() * ((max - min) + 1));
-		}while(!student.know(listLecture.get(rand)));
-		
+			int max  =listLecture.size() -1; int min = 0;
+			//min et max inclu
+			rand = min + (int)(Math.random() * ((max - min) + 1));			 
 
-		return listLecture.get(rand);
+			Iterator<String> i = listLecture.keySet().iterator();
+
+
+			while(i.hasNext() || rand >= 0){
+				rand--;
+				chaine = i.next();
+				if(chaine.contains("POO")){
+					student.followLecture(listLecture.get(chaine));
+				}
+			}
+
+
+		}while(!student.know(listLecture.get(chaine)));
+
+
+		return listLecture.get(chaine);
 	}
 
 

@@ -46,9 +46,15 @@ public class Tests_Item_N1 {
 		
 		st.printLectureFollowed();
 		
+		System.out.println("+Méthode getRandomThanStudentKnow");
+		System.out.println(c.getRandomLectureThanStudentKnow());
+		System.out.println("+Méthode getRandomThanStudentDontKnow");
+		System.out.println(c.getRandomLectureThanStudentDontKnow());
 		System.out.println("+Tablet créé");
 		st.getItem(c.getItem(2));
-		((Tablets)st.getListItem().get(2)).use();
-	}
+		//((Tablets)st.getListItem().get(2)).use();
+		System.out.println("++Utilisation de la tablet");
+		//st.printLectureFollowed();
+	}	
 
 }
