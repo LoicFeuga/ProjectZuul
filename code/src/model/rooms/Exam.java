@@ -1,4 +1,7 @@
-package model;
+package model.rooms;
+
+import model.QCM;
+import model.rooms.Lecture;
 
 import java.util.Scanner;
 
@@ -8,9 +11,9 @@ public class Exam extends Lecture {
 	private Scanner sc;
 	
 	/**
-	 * Constructeur par défaut,
-	 * Il instancie un Exam d'une série de 20 questions simple
-	 *   ainsi qu'une energyNeeded à 0
+	 * Constructeur par dï¿½faut,
+	 * Il instancie un Exam d'une sï¿½rie de 20 questions simple
+	 *   ainsi qu'une energyNeeded ï¿½ 0
 	 * Il permet de tester la class Exam et les liaisons qu'il y a avec 
 	 *   QCM et question
 	 */
@@ -33,8 +36,8 @@ public class Exam extends Lecture {
 	}
 	
 	/**
-	 * Méthode showQCM,
-	 * Montre le qcm dans son intégralité sans les réponses aux questions
+	 * Mï¿½thode showQCM,
+	 * Montre le qcm dans son intï¿½gralitï¿½ sans les rï¿½ponses aux questions
 	 */
 	public void showQCM(){
 		System.out.println("QCM :");
@@ -52,7 +55,7 @@ public class Exam extends Lecture {
 		
 		for(int i = 0 ; i < qcm.getNumberQuestions() ; i++){
 			printQuestion(i);
-			System.out.print("Votre réponse : ");
+			System.out.print("Votre rï¿½ponse : ");
 			String reponse = sc.nextLine();
 			answerTo(i,answerStringToBoolean(reponse));
 		}

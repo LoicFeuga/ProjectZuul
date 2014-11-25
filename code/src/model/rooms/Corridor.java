@@ -1,11 +1,11 @@
-package model;
+package model.rooms;
 
-public class Corridors extends Room {
+public class Corridor extends Room {
 
 	private boolean ligthState;
 
 
-	public Corridors(String description) {
+	public Corridor(String description) {
 		super(description);
 		// TODO Auto-generated constructor stub
 	}

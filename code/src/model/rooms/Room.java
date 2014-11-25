@@ -1,4 +1,6 @@
-package model;
+package model.rooms;
+
+import model.Item;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -89,11 +91,11 @@ public class Room {
 	}
 	
 	/**
-	 * Méthode getExit, elle retourne la room à la direction spécifiée
-	 *   en opérande
+	 * Mï¿½thode getExit, elle retourne la room ï¿½ la direction spï¿½cifiï¿½e
+	 *   en opï¿½rande
 	 *      
 	 * @param direction north, east, ...
-	 * @return La room pointé par la direction
+	 * @return La room pointï¿½ par la direction
 	 */
 	public Room getExit(String direction){
 		return exits.get(direction);

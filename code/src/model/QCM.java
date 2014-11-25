@@ -1,19 +1,21 @@
 package model;
 
+import model.rooms.Exam;
+
 import java.util.ArrayList;
 
 public class QCM {
 	private int mark;
 	private ArrayList<Question> questions;
-	//Chargement d'ancienne questions afin de remplir questions aléatoirement ? à voir !
+	//Chargement d'ancienne questions afin de remplir questions alï¿½atoirement ? ï¿½ voir !
 	private ArrayList<Question> old_questions;
 	private Exam createur;
 	private static int MARK_BY_GOOD_ANSWER = 1;
 
 
 	/**
-	 * Constructeur par défaut,
-	 * Il initialise un QCM de 20 questions par défaut et d'une mark de 0
+	 * Constructeur par dï¿½faut,
+	 * Il initialise un QCM de 20 questions par dï¿½faut et d'une mark de 0
 	 *   afin de tester une class QCM
 	 * 
 	 */
@@ -31,18 +33,18 @@ public class QCM {
 
 	/**
 	 * Contructeur normal,
-	 * Il instancie un QCM avec les opérandes 
+	 * Il instancie un QCM avec les opï¿½randes 
 	 * 
 	 * @param questions liste des questions du QCM
-	 * @param createur hameçon
+	 * @param createur hameï¿½on
 	 */
 	public QCM(ArrayList<Question> questions, Exam createur){
 		this.questions = questions;
 		this.createur = createur;
 	}
 	/**
-	 * Méthode calculateMark,
-	 * Elle compte la note du QCM en vérifiant la validité de chaque question répondue
+	 * Mï¿½thode calculateMark,
+	 * Elle compte la note du QCM en vï¿½rifiant la validitï¿½ de chaque question rï¿½pondue
 	 */
 	public void calculateMark(){
 		resetMark();
@@ -55,8 +57,8 @@ public class QCM {
 
 
 	/**
-	 * Méthode resetMark,
-	 * Elle remet à 0 la note du QCM, afin de recalculer les points
+	 * Mï¿½thode resetMark,
+	 * Elle remet ï¿½ 0 la note du QCM, afin de recalculer les points
 	 */
 	public void resetMark(){mark = 0;}
 	/*

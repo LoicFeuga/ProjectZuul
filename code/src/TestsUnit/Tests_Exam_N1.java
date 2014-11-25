@@ -1,6 +1,6 @@
 package TestsUnit;
 
-import model.Exam;
+import model.rooms.Exam;
 
 public class Tests_Exam_N1 {
 	

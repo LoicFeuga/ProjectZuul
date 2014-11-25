@@ -1,4 +1,4 @@
-package model;
+package model.rooms;
 
 public class LunchRoom extends Room {
 

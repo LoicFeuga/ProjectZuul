@@ -1,21 +1,21 @@
 package controler;
 
-import model.Room;
-import controler.Game;
+import model.rooms.Lab;
+import model.rooms.Room;
 
 /**
  * This class is the main class of the "World of Zuul" application.
  * "World of Zuul" is a very simple, text based adventure game. Users can walk
  * around some scenery. That's all. It should really be extended to make it more
  * interesting!
- * 
+ *
  * To play this game, create an instance of this class and call the "play"
  * method.
- * 
+ *
  * This main class creates and initialises all the others: it creates all rooms,
  * creates the parser and starts the game. It also evaluates and executes the
  * commands that the parser returns.
- * 
+ *
  * @author Michael Kölling and David J. Barnes
  * @version 2011.07.31
  */
@@ -36,25 +36,54 @@ public class Game {
 	 * Create all the rooms and link their exits together.
 	 */
 	private void createRooms() {
-		Room outside, hall1, hall2, salle100,salle101,salle102,salle103,annexeSalle102,toilette,couloir1,couloir2,couloir3,cagibi,
+
+		Room lab1,lab2,corridoor1,corridoor2,classroom1,classroom2,library,exam1,lunchRoom1;
+
+		lab1 = new Lab("Lab1");
+		lab2 = new Lab("Lab2");
+		corridoor1 = new Lab("Corridor 1");
+		corridoor2 = new Lab("Corridor 2");
+		classroom1 = new Lab("ClassRoom 1");
+		classroom2 = new Lab("ClassRoom 2");
+		library = new Lab("Library");
+		exam1 = new Lab("Exam 1");
+		lunchRoom1 = new Lab("LunchRoom 1");
+
+		//set exits
+		lab1.setExit("west",lab2);
+		lab2.setExit("east",lab1);
+		corridoor1.setExit("north",lab1);
+		corridoor1.setExit("south",exam1);
+		corridoor2.setExit("west",classroom1);
+		classroom1.setExit("west",corridoor2);
+		classroom1.setExit("east",corridoor1);
+		classroom2.setExit("west",corridoor1);
+		classroom2.setExit("east",lunchRoom1);
+		library.setExit("east",corridoor2);
+		exam1.setExit("north",corridoor1);
+		lunchRoom1.setExit("west",classroom2);
+
+		currentRoom = corridoor1; // start game corridoor 1*/
+
+		/*Room outside, hall1, hall2, salle100,salle101,salle102,salle103,annexeSalle102,toilette,couloir1,couloir2,couloir3,cagibi,
 		lab,annexeLab,sortie;
 
 		// create the rooms
 		outside = new Room("outside the main entrance of the university");	
-		hall1 = new Room("first part of big hall");
-		hall2 = new Room("second part of big hall");
-		salle100 = new Room("the 100 room in university");
-		salle101 = new Room("the 101 room in university");
-		salle102 = new Room("the 102 room in university");
-		salle103 = new Room("the 103 room in university");
+		hall1 = new Corridor("first part of big hall");
+		hall2 = new Corridor("second part of big hall");
+		salle100 = new Classroom("the 100 room in university");
+		salle101 = new Classroom("the 101 room in university");
+		salle102 = new Classroom("the 102 room in university");
+		salle103 = new Classroom("the 103 room in university");
 		annexeSalle102 = new Room("the annexe of room 102");
 		toilette = new Room("toilette of university");
-		couloir1 = new Room("first part of big corridor");
-		couloir2 = new Room("second part of big corridor");
-		couloir3 = new Room("third part of big corridor");
+		couloir1 = new Corridor("first part of big corridor");
+		couloir2 = new Corridor("second part of big corridor");
+		couloir3 = new Corridor("third part of big corridor");
 		cagibi = new Room("a room for brooms and other things");
-		lab = new Room("the lab for strange professor");
-		annexeLab = new Room("the lab annexe contains a lot of strange things");
+		lab = new Lab("the lab for strange professor");
+		annexeLab = new Lab("the lab annexe contains a lot of strange things");
 		sortie = new Room("outside by annexe");
 
 
@@ -92,7 +121,7 @@ public class Game {
 		sortie.setExit(null, null, null, annexeLab);
 		cagibi.setExit(null,null, couloir1, null);
 
-		currentRoom = outside; // start game outside
+		currentRoom = outside; // start game outside*/
 	}
 
 	public static void main(String[] args) {
@@ -130,7 +159,7 @@ public class Game {
 
 	/**
 	 * Given a command, process (that is: execute) the command.
-	 * 
+	 *
 	 * @param command
 	 *            The command to be processed.
 	 * @return true If the command ends the game, false otherwise.
@@ -215,7 +244,7 @@ public class Game {
 	/**
 	 * "Quit" was entered. Check the rest of the command to see whether we
 	 * really quit the game.
-	 * 
+	 *
 	 * @return true, if this command quits the game, false otherwise.
 	 */
 	private boolean quit(Command command) {
