@@ -41,11 +41,11 @@ public class Tests_Item_N1 {
 		
 		st.printOwnItem();
 		
-		
-		((LectureItem)st.getListItem().get(1)).use();
+
+
 		
 		st.printLectureFollowed();
-		
+		c.printListLecture();
 		System.out.println("+Méthode getRandomThanStudentKnow");
 		System.out.println(c.getRandomLectureThanStudentKnow());
 		System.out.println("+Méthode getRandomThanStudentDontKnow");

@@ -16,11 +16,18 @@ public class Controler {
 	private HashMap<String,Lecture> listLecture;
 	private ArrayList<Item> listItem;
 	private Student student;
+	private Game game;
 
 	public Controler(){
 		listLecture = new HashMap<String,Lecture>();
 		listItem = new ArrayList<>();
 		initLecture();
+		initItem();
+	}
+
+
+	public void initItem(){
+
 		model.Book b = new model.Book("Objects first", this);
 
 		LectureItem li = new LectureItem(this, listLecture.get("T"));
@@ -29,7 +36,6 @@ public class Controler {
 		listItem.add(li);
 		listItem.add(t);
 	}
-
 
 
 	public void initLecture(){
@@ -83,30 +89,36 @@ public class Controler {
 		return listLecture.get(rand);
 	}
 
-	//Need Test
+	//Test ok
 	public Lecture getRandomLectureThanStudentDontKnow(){
 		int rand = 0;
 		String chaine = null;
 		do{
-			int max  =listLecture.size(); int min = 0;
+			int max  =listLecture.size() -1; int min = 0;
 			//min et max inclu
 			rand = min + (int)(Math.random() * ((max - min) + 1));
-			
+
+
+
 			Iterator<String> i = listLecture.keySet().iterator();
+			if(i.hasNext())
+				{
+				chaine =i.next();
 
 
-			while(i.hasNext() || rand >= 0){
-				rand--;
-				chaine = i.next();
-				if(chaine.contains("POO")){
-					student.followLecture(listLecture.get(chaine));
 				}
-			}
-			
-		}while(student.know(listLecture.get(rand)));
 
 
-		return listLecture.get(rand);
+			if(chaine != null)
+				while(i.hasNext() && student.know(listLecture.get(chaine)) && rand >= 0){
+					rand--;
+					chaine = i.next();
+				}
+
+		}while(student.know(listLecture.get(chaine)));
+
+
+		return listLecture.get(chaine);
 	}
 
 	//Test OK
@@ -121,12 +133,10 @@ public class Controler {
 			Iterator<String> i = listLecture.keySet().iterator();
 
 
-			while(i.hasNext() || rand >= 0){
+			while(i.hasNext() && rand >= 0){
 				rand--;
 				chaine = i.next();
-				if(chaine.contains("POO")){
-					student.followLecture(listLecture.get(chaine));
-				}
+
 			}
 
 
@@ -134,6 +144,19 @@ public class Controler {
 
 
 		return listLecture.get(chaine);
+	}
+
+	public Game getGame(){
+		return game;
+	}
+	
+	public void printListLecture(){
+
+		Iterator<String> i = listLecture.keySet().iterator();
+		
+		while(i.hasNext()){
+			System.out.println(listLecture.get(i.next()));
+		}
 	}
 
 

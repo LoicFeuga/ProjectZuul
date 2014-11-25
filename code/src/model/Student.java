@@ -102,6 +102,7 @@ public class Student {
 	}
 	
 	public boolean know(Lecture l){
+		if(l==null) return false;
 		for(int i = 0 ; i < listLecture.size(); i++){			
 			if(l.equals(listLecture.get(i)))
 				return true;
