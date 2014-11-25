@@ -1,34 +1,54 @@
 package TestsUnit;
 
 import model.Coffee;
+import model.rooms.Lecture;
+import model.LectureItem;
 import model.rooms.Room;
 import model.Student;
 import model.Book;
+import model.Tablets;
 import controler.Controler;
 
 public class Tests_Item_N1 {
 	
 	public static void main(String[] args) {
 		
-		Controler c= new Controler();
 		
+		Controler c= new Controler();
+		System.out.println("+Controler créé");
 		Student st = new Student();
+		System.out.println("+Student créé");
+		
 		c.setStudent(st);
 		Room r = new Room("An empty room");
 		
 		st.getItem(c.getItem(0));
-		
+		System.out.println("++Récupération de l'item par le Student");
+		System.out.print("\t");
 		System.out.println(st.toString());
+		System.out.println("++Affichage des items du Student");System.out.print("\t");
 		st.printOwnItem();
-		
+		System.out.println("++Affichage des Lecture suivi");System.out.print("\t");
 		st.printLectureFollowed();
 		
 		((Book)st.getListItem().get(0)).read();
-
+		
+		System.out.println("++Affichage des Lecture suivi");System.out.print("\t");
 		st.printLectureFollowed();
-
 		
 		
+		st.getItem(c.getItem(1));
+		
+		st.printOwnItem();
+		
+		
+		((LectureItem)st.getListItem().get(1)).use();
+		
+		st.printLectureFollowed();
+		
+		System.out.println("+Tablet créé");
+		st.getItem(c.getItem(2));
+		((Tablets)st.getListItem().get(2)).use();
 	}
 
 }
