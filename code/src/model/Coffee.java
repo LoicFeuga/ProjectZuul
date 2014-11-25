@@ -1,4 +1,7 @@
 package model;
+
+import model.rooms.Room;
+
 /**
  * Class Coffee, 
  * 

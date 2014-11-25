@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
+import model.rooms.Lecture;
+
 public class Student {
 	private int energyLevel;
 	private ArrayList<Item> listItem;
@@ -97,5 +99,14 @@ public class Student {
 	
 	public void decreasedEnergy(int number) {	
 		energyLevel-=number;
+	}
+	
+	public boolean know(Lecture l){
+		for(int i = 0 ; i < listLecture.size(); i++){
+			if(l.equals(listLecture))
+				return true;
+		}
+		
+		return false;
 	}
 }

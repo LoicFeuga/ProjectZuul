@@ -1,7 +1,7 @@
 package TestsUnit;
 
 import model.Coffee;
-import model.Room;
+import model.rooms.Room;
 import model.Student;
 
 public class Tests_Student_N1 {
