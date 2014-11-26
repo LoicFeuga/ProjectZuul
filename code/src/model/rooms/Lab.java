@@ -1,9 +1,5 @@
 package model.rooms;
 
-import model.item.Item;
-import model.rooms.Lecture;
-
-import java.util.ArrayList;
 
 public class Lab extends Lecture {
 
