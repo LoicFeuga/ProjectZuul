@@ -1,4 +1,4 @@
-package model;
+package model.item;
 import model.rooms.Lecture;
 import controler.*;
 

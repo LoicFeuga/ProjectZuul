@@ -1,10 +1,18 @@
-package model;
+package model.item;
 
 import java.util.ArrayList;
 
-public class CheatSheet extends Item {
+import controler.Controler;
 
-	public ArrayList getAnwser() {
-		throw new UnsupportedOperationException();
+public class CheatSheet extends Item {
+	private Controler createur;
+	
+	public CheatSheet(Controler createur){
+		this.createur = createur;
 	}
+
+	/*public ArrayList getAnwser() {
+
+		
+	}*/
 }

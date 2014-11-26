@@ -1,5 +1,6 @@
-package model;
+package model.item;
 
+import model.Student;
 import model.rooms.Room;
 
 public abstract class Item {
