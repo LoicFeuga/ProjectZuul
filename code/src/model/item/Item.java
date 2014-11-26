@@ -21,9 +21,5 @@ public abstract class Item {
 	public void setPosition(Room position) {
 		this.position = position;
 	}
-	
-	
-	
-
 
 }

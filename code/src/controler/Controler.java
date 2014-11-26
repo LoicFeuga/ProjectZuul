@@ -12,7 +12,7 @@ import model.item.Tablets;
 import model.rooms.Lecture;
 import model.Student;
 /**
- * 
+ *
  * @author loic
  *
  */
@@ -20,15 +20,14 @@ import model.Student;
 public class Controler {
 	private Student student;
 	private Game game;
-	private Game2 game2;
 
 	public Controler(){
-		game2 = new Game2(this);
-		game2.play();
+		game = new Game(this);
+		game.play();
 	}
 
 
-	
+
 
 	public void setStudent(Student student){
 		this.student = student;
@@ -39,18 +38,18 @@ public class Controler {
 	}
 
 	public Item getItem(int i){
-		return (Item) game2.getListItem().get(i);
+		return (Item) game.getListItem().get(i);
 	}
 
 	public void followAllPOOLecture(){
 
-		Iterator<String> i = game2.getListLecture().keySet().iterator();
+		Iterator<String> i = game.getListLecture().keySet().iterator();
 		String chaine;
 
 		while(i.hasNext()){
 			chaine = i.next();
 			if(chaine.contains("POO")){
-				student.followLecture(game2.getListLecture().get(chaine));
+				student.followLecture(game.getListLecture().get(chaine));
 			}
 		}
 
@@ -58,12 +57,12 @@ public class Controler {
 
 	public Lecture getRandomLecture(){
 
-		int max  =game2.getListLecture().size(); int min = 0;
+		int max  =game.getListLecture().size(); int min = 0;
 		//min et max inclu
 		int rand = min + (int)(Math.random() * ((max - min) + 1));
 
 
-		return game2.getListLecture().get(rand);
+		return game.getListLecture().get(rand);
 	}
 
 	//Test ok
@@ -71,31 +70,31 @@ public class Controler {
 		int rand = 0;
 		String chaine = null;
 		do{
-			int max  =game2.getListLecture().size() -1; int min = 0;
+			int max  =game.getListLecture().size() -1; int min = 0;
 			//min et max inclu
 			rand = min + (int)(Math.random() * ((max - min) + 1));
 
 
 
-			Iterator<String> i = game2.getListLecture().keySet().iterator();
+			Iterator<String> i = game.getListLecture().keySet().iterator();
 			if(i.hasNext())
-				{
+			{
 				chaine =i.next();
 
 
-				}
+			}
 
 
 			if(chaine != null)
-				while(i.hasNext() && student.know(game2.getListLecture().get(chaine)) && rand >= 0){
+				while(i.hasNext() && student.know(game.getListLecture().get(chaine)) && rand >= 0){
 					rand--;
 					chaine = i.next();
 				}
 
-		}while(student.know(game2.getListLecture().get(chaine)));
+		}while(student.know(game.getListLecture().get(chaine)));
 
 
-		return game2.getListLecture().get(chaine);
+		return game.getListLecture().get(chaine);
 	}
 
 	//Test OK
@@ -103,11 +102,11 @@ public class Controler {
 		int rand = 0;
 		String chaine = null;
 		do{
-			int max  =game2.getListLecture().size() -1; int min = 0;
+			int max  =game.getListLecture().size() -1; int min = 0;
 			//min et max inclu
-			rand = min + (int)(Math.random() * ((max - min) + 1));			 
+			rand = min + (int)(Math.random() * ((max - min) + 1));
 
-			Iterator<String> i = game2.getListLecture().keySet().iterator();
+			Iterator<String> i = game.getListLecture().keySet().iterator();
 
 
 			while(i.hasNext() && rand >= 0){
@@ -117,26 +116,26 @@ public class Controler {
 			}
 
 
-		}while(!student.know(game2.getListLecture().get(chaine)));
+		}while(!student.know(game.getListLecture().get(chaine)));
 
 
-		return game2.getListLecture().get(chaine);
+		return game.getListLecture().get(chaine);
 	}
 
 	public Game getGame(){
 		return game;
 	}
-	
+
 	public void printListLecture(){
 
-		Iterator<String> i = game2.getListLecture().keySet().iterator();
-		
+		Iterator<String> i = game.getListLecture().keySet().iterator();
+
 		while(i.hasNext()){
-			System.out.println(game2.getListLecture().get(i.next()));
+			System.out.println(game.getListLecture().get(i.next()));
 		}
 	}
 
-	
+
 	public static void main(String[] args) {
 		Controler c1 = new Controler();
 	}

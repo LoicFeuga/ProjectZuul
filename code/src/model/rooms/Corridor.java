@@ -33,7 +33,8 @@ public class Corridor extends Room {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "The light is "+ligthState;
+		if(this.ligthState == false){ return "The light is off";}
+		else{ return "The light is on";}
 	}
 
 

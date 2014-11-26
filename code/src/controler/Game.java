@@ -1,6 +1,14 @@
 package controler;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import model.item.Item;
+import model.item.LectureItem;
+import model.item.Tablets;
+import model.rooms.Corridor;
 import model.rooms.Lab;
+import model.rooms.Lecture;
 import model.rooms.Room;
 
 /**
@@ -24,13 +32,51 @@ public class Game {
 	private Parser parser;
 	private Room currentRoom;
 
+	private HashMap<String,Lecture> listLecture;
+	private ArrayList<Item> listItem;
+	private Controler createur;
+
 	/**
 	 * Create the game and initialise its internal map.
 	 */
-	public Game() {
+	public Game(Controler createur) {
+
+		listLecture = new HashMap<String,Lecture>();
+		listItem = new ArrayList<>();
+		initLecture();
+		initItem();
 		createRooms();
 		parser = new Parser();
+		this.createur = createur;
 	}
+
+	public void initItem(){
+
+		model.item.Book b = new model.item.Book("Objects first", createur);
+		LectureItem li = new LectureItem(createur, listLecture.get("T"));
+		Tablets t = new Tablets(createur);
+
+		listItem.add(b);
+		listItem.add(li);
+		listItem.add(t);
+	}
+
+
+	public void initLecture(){
+		Lecture l = new Lecture("A fake description","Cours de POO2");
+		Lecture l2 = new Lecture("A fake description2","TD de POO2");
+		Lecture l3 = new Lecture("A fake description3","TD de AA");
+		Lecture lec = new Lecture("Description","Current lesson");
+		Lecture lec2 = new Lecture("Description2","Current lesson");
+
+		listLecture.put("POO0",l);
+		listLecture.put("POO1",l2);
+		listLecture.put("AA",l3);
+		listLecture.put("T",lec);
+		listLecture.put("T2",lec2);
+
+	}
+
 
 	/**
 	 * Create all the rooms and link their exits together.
@@ -41,7 +87,7 @@ public class Game {
 
 		lab1 = new Lab("Lab1");
 		lab2 = new Lab("Lab2");
-		corridoor1 = new Lab("Corridor 1");
+		corridoor1 = new Corridor("Corridor 1");
 		corridoor2 = new Lab("Corridor 2");
 		classroom1 = new Lab("ClassRoom 1");
 		classroom2 = new Lab("ClassRoom 2");
@@ -63,13 +109,17 @@ public class Game {
 		exam1.setExit("north",corridoor1);
 		lunchRoom1.setExit("west",classroom2);
 
+		//ajout d'un item
+		System.out.println((Item)listItem.get(0));
+		corridoor1.addItem(listItem.get(0));
+
 		currentRoom = corridoor1; // start game corridoor 1*/
 
 		/*Room outside, hall1, hall2, salle100,salle101,salle102,salle103,annexeSalle102,toilette,couloir1,couloir2,couloir3,cagibi,
 		lab,annexeLab,sortie;
 
 		// create the rooms
-		outside = new Room("outside the main entrance of the university");	
+		outside = new Room("outside the main entrance of the university");
 		hall1 = new Corridor("first part of big hall");
 		hall2 = new Corridor("second part of big hall");
 		salle100 = new Classroom("the 100 room in university");
@@ -90,28 +140,28 @@ public class Game {
 
 		// initialise room exits
 		outside.setExit("north",hall1);
-		
+
 		hall1.setExit("north",hall2);
-		hall1.setExit("west", salle100); 
+		hall1.setExit("west", salle100);
 		hall1.setExit("south", outside);
 		hall1.setExit("east", salle101);
-		
-		hall2.setExit("north",couloir1); 
+
+		hall2.setExit("north",couloir1);
 		hall2.setExit("south", hall1);
 		hall2.setExit("east", salle103);
 		hall2.setExit("west", salle102);
-		
+
 		salle100.setExit("east", hall1);
-		
+
 		salle101.setExit("west",hall1);
-		
+
 		salle102.setExit("east", hall2);
 		salle102.setExit("west",annexeSalle102);
-		
+
 		salle103.setExit("west",hall2);
-		
+
 		annexeSalle102.setExit("east", salle102);
-		
+
 		couloir1.setExit(cagibi, couloir2, hall2, couloir3);
 		couloir3.setExit(null, couloir1, null, toilette);
 		couloir2.setExit(null, lab, null, couloir1);
@@ -122,11 +172,6 @@ public class Game {
 		cagibi.setExit(null,null, couloir1, null);
 
 		currentRoom = outside; // start game outside*/
-	}
-
-	public static void main(String[] args) {
-		Game g1 = new Game();
-		g1.play();
 	}
 
 	/**
@@ -180,6 +225,12 @@ public class Game {
 			goRoom(command);
 		} else if (commandWord.equals("quit")) {
 			return quit(command);
+		}else if(commandWord.equals("searchobject")){
+			seeAllObjectInRoom();
+		}else if(commandWord.equals("switchonlight")){
+			((Corridor) currentRoom).switchOnLight();
+		}else if(commandWord.equals("switchofflight")){
+			((Corridor) currentRoom).switchOffLight();
 		}
 
 		return wantToQuit;
@@ -187,8 +238,21 @@ public class Game {
 
 	private void printLocationInfo() {
 		System.out.println("You are " + currentRoom.getDescription());
+		System.out.println(currentRoom.toString());
 		System.out.println(currentRoom.getExitString());
 		System.out.println();
+	}
+
+	public void seeAllObjectInRoom(){
+		ArrayList l = currentRoom.getListItem();
+
+
+		for(int i = 0; i < l.size();i++){
+			System.out.println("Object : "+ l.get(i)+" is here");
+		}
+		if(l.size() == 0){
+			System.out.println("No item in this room");
+		}
 	}
 
 	// implementations of user commands:
@@ -254,5 +318,13 @@ public class Game {
 		} else {
 			return true; // signal that we want to quit
 		}
+	}
+
+	public ArrayList getListItem(){
+		return listItem;
+	}
+
+	public HashMap<String, Lecture> getListLecture(){
+		return listLecture;
 	}
 }

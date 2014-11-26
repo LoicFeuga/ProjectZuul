@@ -19,7 +19,7 @@ public class Library extends Room {
 
 	public void readBook(Student stud) {
 		//add a Lecture the student don't have yet.
-		stud.followLecture();
+		//stud.followLecture();
 	}
 
 	public void setOpenCloseTime(Date open, Date close) {
