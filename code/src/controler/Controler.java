@@ -24,6 +24,7 @@ public class Controler {
 
 	public Controler(){
 		game2 = new Game2(this);
+		game2.play();
 	}
 
 
