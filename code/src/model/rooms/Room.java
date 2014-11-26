@@ -1,6 +1,6 @@
 package model.rooms;
 
-import model.Item;
+import model.item.Item;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,9 +38,15 @@ public class Room {
 	 */
 	public Room(String description) {
 		this.description = description;
+		items = new ArrayList<>();
 		exits = new HashMap<>();
 	}
 
+	public Room(String description, ArrayList<Item> listItems){
+		this.description = description;
+		items = listItems;
+		
+	}
 	/**
 	 * Define an exit from this room.
 	 * 
@@ -110,6 +116,22 @@ public class Room {
 	public boolean isOpen(){
 		return isOpen;
 	}
+	
+	public void addItem(Item item){
+		items.add(item);
+		
+	}
+	
+	
+	public void deleteItem(Item item){
+		items.remove(item);
+	}
+	
+	public ArrayList getListItem(){
+		return items;
+	}
+	
+	
 
 
 }

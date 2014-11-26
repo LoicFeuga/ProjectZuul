@@ -39,21 +39,22 @@ public class Game2 {
 	 * Create the game and initialise its internal map.
 	 */
 	public Game2(Controler createur) {
-		createRooms();
-		parser = new Parser();
-		this.createur = createur;
+
 		listLecture = new HashMap<String,Lecture>();
 		listItem = new ArrayList<>();
 		initLecture();
 		initItem();
+		createRooms();
+		parser = new Parser();
+		this.createur = createur;
 	}
 	
 	public void initItem(){
 
 		model.item.Book b = new model.item.Book("Objects first", createur);
-
 		LectureItem li = new LectureItem(createur, listLecture.get("T"));
 		Tablets t = new Tablets(createur);
+		
 		listItem.add(b);
 		listItem.add(li);
 		listItem.add(t);
@@ -106,7 +107,11 @@ public class Game2 {
 		library.setExit("east",corridoor2);
 		exam1.setExit("north",corridoor1);
 		lunchRoom1.setExit("west",classroom2);
-
+		
+		//ajout d'un item
+		System.out.println((Item)listItem.get(0));
+		corridoor1.addItem(listItem.get(0));
+		
 		currentRoom = corridoor1; // start game corridoor 1*/
 
 		/*Room outside, hall1, hall2, salle100,salle101,salle102,salle103,annexeSalle102,toilette,couloir1,couloir2,couloir3,cagibi,
@@ -219,6 +224,8 @@ public class Game2 {
 			goRoom(command);
 		} else if (commandWord.equals("quit")) {
 			return quit(command);
+		}else if(commandWord.equals("searchobject")){
+			seeAllObjectInRoom();
 		}
 
 		return wantToQuit;
@@ -228,6 +235,18 @@ public class Game2 {
 		System.out.println("You are " + currentRoom.getDescription());
 		System.out.println(currentRoom.getExitString());
 		System.out.println();
+	}
+	
+	public void seeAllObjectInRoom(){
+		ArrayList l = currentRoom.getListItem();
+		
+		
+		for(int i = 0; i < l.size();i++){
+			System.out.println("Object : "+ l.get(i)+" is here");
+		}
+		if(l.size() == 0){
+			System.out.println("No item in this room");
+		}
 	}
 
 	// implementations of user commands:
