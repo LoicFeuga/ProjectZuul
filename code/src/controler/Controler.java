@@ -4,31 +4,38 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import com.sun.org.apache.bcel.internal.generic.LLOAD;
 
-import model.Item;
+
+import model.item.Item;
+import model.item.LectureItem;
+import model.item.Tablets;
 import model.rooms.Lecture;
-import model.LectureItem;
 import model.Student;
-import model.Tablets;
+/**
+ * 
+ * @author loic
+ *
+ */
 
 public class Controler {
 	private HashMap<String,Lecture> listLecture;
 	private ArrayList<Item> listItem;
 	private Student student;
 	private Game game;
+	private Game2 game2;
 
 	public Controler(){
 		listLecture = new HashMap<String,Lecture>();
 		listItem = new ArrayList<>();
 		initLecture();
 		initItem();
+		game2 = new Game2();
 	}
 
 
 	public void initItem(){
 
-		model.Book b = new model.Book("Objects first", this);
+		model.item.Book b = new model.item.Book("Objects first", this);
 
 		LectureItem li = new LectureItem(this, listLecture.get("T"));
 		Tablets t = new Tablets(this);
@@ -159,5 +166,9 @@ public class Controler {
 		}
 	}
 
+	
+	public static void main(String[] args) {
+		Controler c1 = new Controler();
+	}
 
 }

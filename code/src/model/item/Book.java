@@ -1,5 +1,7 @@
  package model.item;
-
+/**
+ * @author loic
+ */
 import controler.Controler;
 
 public class Book extends Item {

@@ -1,5 +1,7 @@
 package model.item;
-
+/**
+ * @author loic
+ */
 import model.Student;
 import model.rooms.Room;
 

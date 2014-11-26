@@ -1,5 +1,7 @@
 package TestsUnit;
-
+/**
+ * @author loic
+ */
 import model.rooms.Exam;
 
 public class Tests_Exam_N1 {

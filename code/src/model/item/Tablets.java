@@ -1,5 +1,7 @@
 package model.item;
-
+/**
+ * @author loic
+ */
 import java.util.Random;
 
 import model.rooms.Lecture;

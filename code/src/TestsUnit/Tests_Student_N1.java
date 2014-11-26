@@ -1,6 +1,8 @@
 package TestsUnit;
-
-import model.Coffee;
+/**
+ * @author loic
+ */
+import model.item.Coffee;
 import model.rooms.Room;
 import model.Student;
 

@@ -1,7 +1,10 @@
 package model;
-
+/**
+ * @author loic
+ */
 import java.util.ArrayList;
 
+import model.item.Item;
 import model.rooms.Lecture;
 
 public class Student {

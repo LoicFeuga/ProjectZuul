@@ -1,5 +1,7 @@
 package TestsUnit;
-
+/**
+ * @author loic
+ */
 import model.item.Book;
 import model.item.Coffee;
 import model.item.LectureItem;

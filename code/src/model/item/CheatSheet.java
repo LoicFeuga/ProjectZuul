@@ -1,5 +1,7 @@
 package model.item;
-
+/**
+ * @author loic
+ */
 import java.util.ArrayList;
 
 import controler.Controler;

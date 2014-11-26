@@ -1,7 +1,11 @@
 package model.item;
 import model.rooms.Lecture;
 import controler.*;
-
+/**
+ * 
+ * @author loic
+ *
+ */
 public class LectureItem extends Item {
 	private Controler createur;
 	private Lecture lecture;

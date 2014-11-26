@@ -1,5 +1,7 @@
 package model;
-
+/**
+ * @author loic
+ */
 import model.rooms.Exam;
 
 import java.util.ArrayList;
