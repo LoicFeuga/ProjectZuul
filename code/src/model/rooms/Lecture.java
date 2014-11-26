@@ -1,17 +1,18 @@
 package model.rooms;
+import model.item.Item;
 
-import model.rooms.Room;
+import java.util.ArrayList;
 
 public class Lecture extends Room {
 
 	private String currentLecture;
 	private boolean catchStudent;
+	private ArrayList<Item> items;
 
-	public Lecture(String description){
+	public Lecture(String description) {
 		super(description);
-		
 	}
-	
+
 	public Lecture(String description,String current) {
 		super(description);
 		this.currentLecture = current;
@@ -45,5 +46,11 @@ public class Lecture extends Room {
 		String str = "Lecture : "+currentLecture;
 		return str;
 	}
-	
+	public ArrayList<Item> getItems() {
+		return items;
+	}
+
+	public void addItem(Item it){
+		this.items.add(it);
+	}
 }

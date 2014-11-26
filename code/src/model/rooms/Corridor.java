@@ -11,10 +11,10 @@ public class Corridor extends Room {
 	}
 	
 	public void switchOnLight() {
-		throw new UnsupportedOperationException();
+		ligthState= true;
 	}
 
 	public void switchOffLight() {
-		throw new UnsupportedOperationException();
+		ligthState= false;
 	}
 }

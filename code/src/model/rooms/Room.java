@@ -1,6 +1,6 @@
 package model.rooms;
 
-import model.Item;
+import model.item.Item;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,6 +24,7 @@ import java.util.HashMap;
  */
 
 public class Room {
+
 	private boolean isOpen;
 	private ArrayList<Item> items;
 	public String description;

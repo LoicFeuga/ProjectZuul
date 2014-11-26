@@ -3,6 +3,7 @@ package model;
  * @author loic
  */
 import java.util.ArrayList;
+import model.rooms.Lecture;
 
 import model.item.Item;
 import model.rooms.Lecture;
@@ -51,7 +52,7 @@ public class Student {
 	}
 	
 	public void printOwnItem(){
-		if(listItem.size() == 0 ) System.out.println("Aucun item possédé");
+		if(listItem.size() == 0 ) System.out.println("Aucun item possï¿½dï¿½");
 		
 		for(int i = 0 ; i < listItem.size(); i++){
 			System.out.println("Item "+(i+1)+" : "+listItem.get(i).toString());
@@ -59,7 +60,7 @@ public class Student {
 	}
 	
 	public void printLectureFollowed(){
-		if(listLecture.size() == 0 ) System.out.println("Aucune leçon suivie à ce jour");
+		if(listLecture.size() == 0 ) System.out.println("Aucune leï¿½on suivie ï¿½ ce jour");
 		
 		for(int i = 0 ; i < listLecture.size(); i++){
 			System.out.println("Lecture"+(i+1)+" : "+listLecture.get(i).toString());
