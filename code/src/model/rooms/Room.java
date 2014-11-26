@@ -24,6 +24,7 @@ import java.util.HashMap;
  */
 
 public class Room {
+
 	private boolean isOpen;
 	private ArrayList<Item> items;
 	public String description;

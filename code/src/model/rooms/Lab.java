@@ -1,6 +1,9 @@
 package model.rooms;
 
+import model.item.Item;
 import model.rooms.Lecture;
+
+import java.util.ArrayList;
 
 public class Lab extends Lecture {
 
@@ -8,4 +11,5 @@ public class Lab extends Lecture {
 		super(description);
 		// TODO Auto-generated constructor stub
 	}
+
 }
