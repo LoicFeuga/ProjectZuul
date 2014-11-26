@@ -1,12 +1,12 @@
 package TestsUnit;
 
-import model.Coffee;
+import model.item.Book;
+import model.item.Coffee;
+import model.item.LectureItem;
+import model.item.Tablets;
 import model.rooms.Lecture;
-import model.LectureItem;
 import model.rooms.Room;
 import model.Student;
-import model.Book;
-import model.Tablets;
 import controler.Controler;
 
 public class Tests_Item_N1 {
@@ -52,9 +52,9 @@ public class Tests_Item_N1 {
 		System.out.println(c.getRandomLectureThanStudentDontKnow());
 		System.out.println("+Tablet créé");
 		st.getItem(c.getItem(2));
-		//((Tablets)st.getListItem().get(2)).use();
+		((Tablets)st.getListItem().get(2)).use();
 		System.out.println("++Utilisation de la tablet");
-		//st.printLectureFollowed();
+		st.printLectureFollowed();
 	}	
 
 }
