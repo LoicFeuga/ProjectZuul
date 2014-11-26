@@ -6,6 +6,7 @@ import java.util.HashMap;
 import model.item.Item;
 import model.item.LectureItem;
 import model.item.Tablets;
+import model.rooms.Corridor;
 import model.rooms.Lab;
 import model.rooms.Lecture;
 import model.rooms.Room;
@@ -86,7 +87,7 @@ public class Game2 {
 
 		lab1 = new Lab("Lab1");
 		lab2 = new Lab("Lab2");
-		corridoor1 = new Lab("Corridor 1");
+		corridoor1 = new Corridor("Corridor 1");
 		corridoor2 = new Lab("Corridor 2");
 		classroom1 = new Lab("ClassRoom 1");
 		classroom2 = new Lab("ClassRoom 2");
@@ -226,6 +227,10 @@ public class Game2 {
 			return quit(command);
 		}else if(commandWord.equals("searchobject")){
 			seeAllObjectInRoom();
+		}else if(commandWord.equals("switchonlight")){
+			((Corridor) currentRoom).switchOnLight();
+		}else if(commandWord.equals("switchofflight")){
+			((Corridor) currentRoom).switchOffLight();
 		}
 
 		return wantToQuit;
@@ -233,6 +238,7 @@ public class Game2 {
 
 	private void printLocationInfo() {
 		System.out.println("You are " + currentRoom.getDescription());
+		System.out.println(currentRoom.toString());
 		System.out.println(currentRoom.getExitString());
 		System.out.println();
 	}

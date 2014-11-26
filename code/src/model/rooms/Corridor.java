@@ -7,14 +7,29 @@ public class Corridor extends Room {
 
 	public Corridor(String description) {
 		super(description);
-		// TODO Auto-generated constructor stub
+		ligthState = false;
 	}
-	
+
 	public void switchOnLight() {
-		throw new UnsupportedOperationException();
+		if(ligthState != true){
+			ligthState = true;
+			System.out.println("Light switch on");
+		}else{
+			System.out.println("Light already switch on");
+		}
 	}
 
 	public void switchOffLight() {
-		throw new UnsupportedOperationException();
+		if(ligthState != false){
+			ligthState = false;
+			System.out.println("Light switch off");
+		}else
+			System.out.println("Light already switch off");
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "The light is "+ligthState;
 	}
 }
