@@ -2,30 +2,27 @@ package TestsUnit;
 /**
  * @author loic
  */
+import controler.Controller;
 import model.item.Book;
-import model.item.Coffee;
-import model.item.LectureItem;
 import model.item.Tablets;
-import model.rooms.Lecture;
 import model.rooms.Room;
 import model.Student;
-import controler.Controler;
 
 public class Tests_Item_N1 {
 	
 	public static void main(String[] args) {
 		
 		
-		Controler c= new Controler();
-		System.out.println("+Controler créé");
+		Controller c= new Controller();
+		System.out.println("+Controller crï¿½ï¿½");
 		Student st = new Student();
-		System.out.println("+Student créé");
+		System.out.println("+Student crï¿½ï¿½");
 		
 		c.setStudent(st);
 		Room r = new Room("An empty room");
 		
 		st.getItem(c.getItem(0));
-		System.out.println("++Récupération de l'item par le Student");
+		System.out.println("++Rï¿½cupï¿½ration de l'item par le Student");
 		System.out.print("\t");
 		System.out.println(st.toString());
 		System.out.println("++Affichage des items du Student");System.out.print("\t");
@@ -48,11 +45,11 @@ public class Tests_Item_N1 {
 		
 		st.printLectureFollowed();
 		c.printListLecture();
-		System.out.println("+Méthode getRandomThanStudentKnow");
+		System.out.println("+Mï¿½thode getRandomThanStudentKnow");
 		System.out.println(c.getRandomLectureThanStudentKnow());
-		System.out.println("+Méthode getRandomThanStudentDontKnow");
+		System.out.println("+Mï¿½thode getRandomThanStudentDontKnow");
 		System.out.println(c.getRandomLectureThanStudentDontKnow());
-		System.out.println("+Tablet créé");
+		System.out.println("+Tablet crï¿½ï¿½");
 		st.getItem(c.getItem(2));
 		((Tablets)st.getListItem().get(2)).use();
 		System.out.println("++Utilisation de la tablet");
