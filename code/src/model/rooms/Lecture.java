@@ -7,7 +7,6 @@ public class Lecture extends Room {
 
 	private String currentLecture;
 	private boolean catchStudent;
-	private ArrayList<Item> items;
 
 	public Lecture(String description) {
 		super(description);
@@ -18,13 +17,13 @@ public class Lecture extends Room {
 		this.currentLecture = current;
 		this.catchStudent = false;
 	}
-	
+
 	public Lecture(String description,String current,boolean canCatch) {
 		super(description);
 		this.currentLecture = current;
 		this.catchStudent = canCatch;
 	}
-	
+
 	public boolean getCatchStudent() {
 		return this.catchStudent;
 	}
@@ -40,17 +39,11 @@ public class Lecture extends Room {
 	public void setCurrentLecture(String currentLecture) {
 		this.currentLecture = currentLecture;
 	}
-	
+
 	@Override
 	public String toString() {
 		String str = "Lecture : "+currentLecture;
 		return str;
 	}
-	public ArrayList<Item> getItems() {
-		return items;
-	}
 
-	public void addItem(Item it){
-		this.items.add(it);
-	}
 }

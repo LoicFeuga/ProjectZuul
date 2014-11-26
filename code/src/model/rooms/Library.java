@@ -10,7 +10,6 @@ public class Library extends Room {
 
 	private Date timeOpen;
 	private Date timeClose;
-	private ArrayList<Item> items;
 
 
 	public Library(String description) {
@@ -26,13 +25,5 @@ public class Library extends Room {
 	public void setOpenCloseTime(Date open, Date close) {
 		this.timeClose=close;
 		this.timeOpen=open;
-	}
-
-	public ArrayList<Item> getItems() {
-		return items;
-	}
-
-	public void addItem(Item it){
-		this.items.add(it);
 	}
 }
