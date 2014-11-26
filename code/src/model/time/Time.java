@@ -3,10 +3,11 @@ package model.time;
 
 
 import java.util.Date;
+import java.util.Observable;
 
 import controler.Controler;
 
-public class Time implements Runnable{
+public class Time extends Observable implements Runnable{
 	private Controler createur;
 	private long all;
 	private int hour;
@@ -37,6 +38,7 @@ public class Time implements Runnable{
 		}if(minutes == 60){
 			minutes = 0;
 			hour++;
+			warnEachHour();
 		}if(hour == 24){
 			hour=0;
 			day++;
@@ -51,6 +53,13 @@ public class Time implements Runnable{
 			try {Thread.sleep(10);}
 			catch (InterruptedException e) {e.printStackTrace();}
 		}
+	}
+	
+	public void warnEachHour(){
+		String send = "dring";
+		
+		setChanged();
+		notifyObservers(send);
 	}
 	
 	@Override
