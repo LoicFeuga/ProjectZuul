@@ -7,10 +7,10 @@ import controler.*;
  *
  */
 public class LectureItem extends Item {
-	private Controler createur;
+	private Controller createur;
 	private Lecture lecture;
 	
-	public LectureItem(Controler createur, Lecture lecture){
+	public LectureItem(Controller createur, Lecture lecture){
 		this.createur = createur;
 		this.lecture = lecture;
 	}

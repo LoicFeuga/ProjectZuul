@@ -2,13 +2,13 @@
 /**
  * @author loic
  */
-import controler.Controler;
+import controler.Controller;
 
-public class Book extends Item {
+ public class Book extends Item {
 	private String title;
-	private Controler createur;
+	private Controller createur;
 
-	public Book(String title, Controler createur){
+	public Book(String title, Controller createur){
 		this.title = title;
 		this.createur = createur;
 	}

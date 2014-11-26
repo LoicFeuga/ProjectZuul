@@ -6,10 +6,7 @@ import java.util.HashMap;
 import model.item.Item;
 import model.item.LectureItem;
 import model.item.Tablets;
-import model.rooms.Corridor;
-import model.rooms.Lab;
-import model.rooms.Lecture;
-import model.rooms.Room;
+import model.rooms.*;
 
 /**
  * This class is the main class of the "World of Zuul" application.
@@ -34,12 +31,12 @@ public class Game {
 
 	private HashMap<String,Lecture> listLecture;
 	private ArrayList<Item> listItem;
-	private Controler createur;
+	private Controller createur;
 
 	/**
 	 * Create the game and initialise its internal map.
 	 */
-	public Game(Controler createur) {
+	public Game(Controller createur) {
 
 		listLecture = new HashMap<String,Lecture>();
 		listItem = new ArrayList<>();
@@ -89,8 +86,8 @@ public class Game {
 		lab2 = new Lab("Lab2");
 		corridoor1 = new Corridor("Corridor 1");
 		corridoor2 = new Lab("Corridor 2");
-		classroom1 = new Lab("ClassRoom 1");
-		classroom2 = new Lab("ClassRoom 2");
+		classroom1 = new Classroom("ClassRoom 1",listLecture.get(0));
+		classroom2 = new Classroom("ClassRoom 2",listLecture.get(1));
 		library = new Lab("Library");
 		exam1 = new Lab("Exam 1");
 		lunchRoom1 = new Lab("LunchRoom 1");
@@ -113,65 +110,10 @@ public class Game {
 		System.out.println((Item)listItem.get(0));
 		corridoor1.addItem(listItem.get(0));
 
+		//put lectures in classrooms
+
+
 		currentRoom = corridoor1; // start game corridoor 1*/
-
-		/*Room outside, hall1, hall2, salle100,salle101,salle102,salle103,annexeSalle102,toilette,couloir1,couloir2,couloir3,cagibi,
-		lab,annexeLab,sortie;
-
-		// create the rooms
-		outside = new Room("outside the main entrance of the university");
-		hall1 = new Corridor("first part of big hall");
-		hall2 = new Corridor("second part of big hall");
-		salle100 = new Classroom("the 100 room in university");
-		salle101 = new Classroom("the 101 room in university");
-		salle102 = new Classroom("the 102 room in university");
-		salle103 = new Classroom("the 103 room in university");
-		annexeSalle102 = new Room("the annexe of room 102");
-		toilette = new Room("toilette of university");
-		couloir1 = new Corridor("first part of big corridor");
-		couloir2 = new Corridor("second part of big corridor");
-		couloir3 = new Corridor("third part of big corridor");
-		cagibi = new Room("a room for brooms and other things");
-		lab = new Lab("the lab for strange professor");
-		annexeLab = new Lab("the lab annexe contains a lot of strange things");
-		sortie = new Room("outside by annexe");
-
-
-
-		// initialise room exits
-		outside.setExit("north",hall1);
-
-		hall1.setExit("north",hall2);
-		hall1.setExit("west", salle100);
-		hall1.setExit("south", outside);
-		hall1.setExit("east", salle101);
-
-		hall2.setExit("north",couloir1);
-		hall2.setExit("south", hall1);
-		hall2.setExit("east", salle103);
-		hall2.setExit("west", salle102);
-
-		salle100.setExit("east", hall1);
-
-		salle101.setExit("west",hall1);
-
-		salle102.setExit("east", hall2);
-		salle102.setExit("west",annexeSalle102);
-
-		salle103.setExit("west",hall2);
-
-		annexeSalle102.setExit("east", salle102);
-
-		couloir1.setExit(cagibi, couloir2, hall2, couloir3);
-		couloir3.setExit(null, couloir1, null, toilette);
-		couloir2.setExit(null, lab, null, couloir1);
-		toilette.setExit(null, couloir3, null, null);
-		lab.setExit(null, null, annexeLab, couloir2);
-		annexeLab.setExit(lab, sortie, null, null);
-		sortie.setExit(null, null, null, annexeLab);
-		cagibi.setExit(null,null, couloir1, null);
-
-		currentRoom = outside; // start game outside*/
 	}
 
 	/**
@@ -212,6 +154,27 @@ public class Game {
 	private boolean processCommand(Command command) {
 		boolean wantToQuit = false;
 
+		//if the room is a lab, a classroom, or an exam room, it may block the player from executing commands,
+		//depending on which lecture he is in. (POO lecture, or exams)
+		if(currentRoom instanceof Lab) {
+			Lab room = (Lab)currentRoom;
+			if(room.getLect().getCatchStudent()){
+				System.out.println("You can't do anything until the Lab session is not over !");
+				return false;
+			}
+		}else if(currentRoom instanceof Classroom) {
+			Classroom room = (Classroom)currentRoom;
+			if(room.getLect().getCatchStudent()){
+				System.out.println("You can't do anything until the Lecture session is not over !");
+				return false;
+			}
+		}else if(currentRoom instanceof Exam){
+			Exam room = (Exam)currentRoom;
+			if(room.getLect().getCatchStudent()){
+				System.out.println("You can't do anything until the exam session is not over !");
+				return false;
+			}
+		}
 		if (command.isUnknown()) {
 			System.out.println("I don't know what you mean...");
 

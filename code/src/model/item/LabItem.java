@@ -2,14 +2,14 @@ package model.item;
 /**
  * @author loic
  */
+import controler.Controller;
 import model.rooms.Lecture;
-import controler.Controler;
 
 public class LabItem extends Item {
-	private Controler createur;
+	private Controller createur;
 	private Lecture lecture;
 	
-	public LabItem(Controler createur, Lecture lecture){
+	public LabItem(Controller createur, Lecture lecture){
 		this.createur = createur;
 		this.lecture = lecture;
 	}

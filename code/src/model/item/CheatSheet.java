@@ -2,14 +2,13 @@ package model.item;
 /**
  * @author loic
  */
-import java.util.ArrayList;
 
-import controler.Controler;
+import controler.Controller;
 
 public class CheatSheet extends Item {
-	private Controler createur;
+	private Controller createur;
 	
-	public CheatSheet(Controler createur){
+	public CheatSheet(Controller createur){
 		this.createur = createur;
 	}
 

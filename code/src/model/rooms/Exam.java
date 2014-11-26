@@ -6,6 +6,7 @@ import model.rooms.Lecture;
 import java.util.Scanner;
 
 public class Exam extends Lecture {
+	private Lecture lect;
 	private int energyNeeded;
 	private QCM qcm;
 	private Scanner sc;
@@ -77,5 +78,13 @@ public class Exam extends Lecture {
 		else {
 			return false;
 		}
+	}
+
+	public Lecture getLect() {
+		return lect;
+	}
+
+	public void setLect(Lecture lect) {
+		this.lect = lect;
 	}
 }

@@ -2,15 +2,14 @@ package model.item;
 /**
  * @author loic
  */
-import java.util.Random;
 
 import model.rooms.Lecture;
-import controler.Controler;
+import controler.Controller;
 
 public class Tablets extends Item {
-	private Controler createur;
+	private Controller createur;
 	
-	public Tablets(Controler createur){
+	public Tablets(Controller createur){
 		this.createur = createur;
 	}
 	
@@ -27,7 +26,7 @@ public class Tablets extends Item {
 	}
 
 	/**
-	 * Utilisation de la tablet aléatoirement entre read et play
+	 * Utilisation de la tablet alï¿½atoirement entre read et play
 	 *   pour l'instant 50%
 	 */
 	public void use() {
