@@ -61,7 +61,9 @@ public class Game {
 
 	public void initLecture(){
 		Lecture l = new Lecture("A fake description","Cours de POO2");
+		l.setCatchStudent(true);
 		Lecture l2 = new Lecture("A fake description2","TD de POO2");
+		l2.setCatchStudent(true);
 		Lecture l3 = new Lecture("A fake description3","TD de AA");
 		Lecture lec = new Lecture("Description","Current lesson");
 		Lecture lec2 = new Lecture("Description2","Current lesson");

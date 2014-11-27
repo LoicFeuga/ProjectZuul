@@ -29,7 +29,6 @@ public class Student {
 		energyLevel = 100;
 		listItem = new ArrayList<Item>();
 		listLecture = new ArrayList<>();
-				
 	}
 	
 	public void getItem(Item item){
