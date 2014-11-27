@@ -27,7 +27,7 @@ public class CommandWords
             "go", "quit","searchobject", "help"
     };
     private static final String[] EXAM = {
-            "go", "quit","searchobject", "help",
+            "go", "quit","searchobject", "help", "cheat"
     };
     private static final String[] CORRIDOOR = {
             "go", "quit","searchobject","lighton","lightoff", "help"
@@ -47,7 +47,7 @@ public class CommandWords
         listCommRooms.put("Classroom",CLASSROOM);
         listCommRooms.put("Lab",LAB);
         listCommRooms.put("Exam",EXAM);
-        listCommRooms.put("Corridoor",CORRIDOOR);
+        listCommRooms.put("Corridor",CORRIDOOR);
         listCommRooms.put("LunchRoom",LUNCHROOM);
         listCommRooms.put("Library",LIBRARY);
     }

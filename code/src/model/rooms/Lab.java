@@ -7,9 +7,9 @@ import java.util.Observer;
 public class Lab extends Room implements Observer{
 	private Lecture lect;
 
-	public Lab(String description) {
+	public Lab(String description, Lecture lect) {
 		super(description);
-		// TODO Auto-generated constructor stub
+		this.lect = lect;
 	}
 
 	@Override

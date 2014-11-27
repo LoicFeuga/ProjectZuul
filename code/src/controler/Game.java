@@ -76,6 +76,7 @@ public class Game {
 		listLecture.put("AA",l3);
 		listLecture.put("T",lec);
 		listLecture.put("T2",lec2);
+		listLecture.put("POOEx",lex);
 
 	}
 
@@ -87,15 +88,15 @@ public class Game {
 
 		Room lab1,lab2,corridoor1,corridoor2,classroom1,classroom2,library,exam1,lunchRoom1;
 
-		lab1 = new Lab("Lab1");
-		lab2 = new Lab("Lab2");
+		lab1 = new Lab("Lab1",listLecture.get("T"));
+		lab2 = new Lab("Lab2",listLecture.get("POO0"));
 		corridoor1 = new Corridor("Corridor 1");
-		corridoor2 = new Lab("Corridor 2");
-		classroom1 = new Classroom("ClassRoom 1",listLecture.get(0));
-		classroom2 = new Classroom("ClassRoom 2",listLecture.get(1));
-		library = new Lab("Library");
-		exam1 = new Lab("Exam 1");
-		lunchRoom1 = new Lab("LunchRoom 1");
+		corridoor2 = new Corridor("Corridor 2");
+		classroom1 = new Classroom("ClassRoom 1",listLecture.get("AA"));
+		classroom2 = new Classroom("ClassRoom 2",listLecture.get("POO0"));
+		library = new Library("Library");
+		exam1 = new Exam("Exam 1",listLecture.get("POOEx"));
+		lunchRoom1 = new LunchRoom("LunchRoom 1");
 
 		//set exits
 		lab1.setExit("west",lab2);

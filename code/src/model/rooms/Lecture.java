@@ -1,7 +1,4 @@
 package model.rooms;
-import model.item.Item;
-
-import java.util.ArrayList;
 
 public class Lecture extends Room {
 

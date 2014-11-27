@@ -19,10 +19,11 @@ public class Exam extends Room {
 	 * Il permet de tester la class Exam et les liaisons qu'il y a avec 
 	 *   QCM et question
 	 */
-	public Exam(String nom){
+	public Exam(String nom, Lecture lect){
 		super(nom);
 		energyNeeded = 0;
 		qcm = new QCM();
+		this.lect= lect;
 	}
 	
 	/**
@@ -31,10 +32,11 @@ public class Exam extends Room {
 	 * @param energyNeeded Energie minimum pour passer l'examene
 	 * @param qcm qcm de l'examen
 	 */
-	public Exam(int energyNeeded, QCM qcm,String nom){
+	public Exam(int energyNeeded, QCM qcm,String nom, Lecture lect){
 		super(nom);
 		this.energyNeeded = energyNeeded;
 		this.qcm = qcm;
+		this.lect= lect;
 	}
 	
 	/**
