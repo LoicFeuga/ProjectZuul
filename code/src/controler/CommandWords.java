@@ -41,7 +41,7 @@ public class CommandWords
         return false;
     }
     
-    public void printCommand(){
+    public static void printCommand(){
     	for(int i = 0 ; i < VALID_COMMANDS.length;i++){
     		System.out.println(VALID_COMMANDS[i]+ " ");
     	}
