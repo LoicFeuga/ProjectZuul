@@ -18,7 +18,7 @@ public class Tests_Item_N1 {
 		Student st = new Student();
 		System.out.println("+Student cr��");
 		
-		c.setStudent(st);
+		//c.setStudent(st);
 		Room r = new Room("An empty room");
 		
 		st.getItem(c.getItem(0));
@@ -46,9 +46,9 @@ public class Tests_Item_N1 {
 		st.printLectureFollowed();
 		c.printListLecture();
 		System.out.println("+M�thode getRandomThanStudentKnow");
-		System.out.println(c.getRandomLectureThanStudentKnow());
+		//System.out.println(c.getRandomLectureThanStudentKnow());
 		System.out.println("+M�thode getRandomThanStudentDontKnow");
-		System.out.println(c.getRandomLectureThanStudentDontKnow());
+		//System.out.println(c.getRandomLectureThatStudentDontKnow());
 		System.out.println("+Tablet cr��");
 		st.getItem(c.getItem(2));
 		((Tablets)st.getListItem().get(2)).use();

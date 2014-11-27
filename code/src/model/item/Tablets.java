@@ -15,14 +15,14 @@ public class Tablets extends Item {
 	
 	private void read() {
 		System.out.println("Lire");
-		Lecture l  = createur.getRandomLectureThanStudentDontKnow();
-		createur.getStudent().followLecture(l);
+		//Lecture l  = createur.getRandomLectureThanStudentDontKnow();
+		//createur.getStudent().followLecture(l);
 	}
 
 	private void play() {
 		System.out.println("Jeux");
-		Lecture l  = createur.getRandomLectureThanStudentKnow();
-		createur.getStudent().forgetLecture(l);
+		//Lecture l  = createur.getRandomLectureThanStudentKnow();
+		//createur.getStudent().forgetLecture(l);
 	}
 
 	/**

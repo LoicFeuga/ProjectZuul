@@ -15,10 +15,10 @@ import controler.Controller;
 	
 	public void read() {
 		if(!"Objects first".equals(title)){
-			owner.followLecture(null);
+			//owner.followLecture(null);
 		}
 		else{
-			createur.followAllPOOLecture();
+			//createur.followAllPOOLecture();
 		}
 	}
 	

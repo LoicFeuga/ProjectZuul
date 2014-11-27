@@ -1,16 +1,20 @@
 package model.rooms;
 
+import model.item.LectureItem;
+
 public class Lecture extends Room {
 
 	private String currentLecture;
+	private String key;
 	private boolean catchStudent;
 
 	public Lecture(String description) {
 		super(description);
 	}
 
-	public Lecture(String description,String current) {
+	public Lecture(String description,String current,String key) {
 		super(description);
+		this.key = key;
 		this.currentLecture = current;
 		this.catchStudent = false;
 	}
@@ -35,6 +39,10 @@ public class Lecture extends Room {
 
 	public void setCurrentLecture(String currentLecture) {
 		this.currentLecture = currentLecture;
+	}
+
+	public String getKey() {
+		return key;
 	}
 
 	@Override

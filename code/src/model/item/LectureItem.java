@@ -2,32 +2,25 @@ package model.item;
 import model.rooms.Lecture;
 import controler.*;
 /**
- * 
+ *
  * @author loic
  *
  */
 public class LectureItem extends Item {
-	private Controller createur;
-	private Lecture lecture;
-	
-	public LectureItem(Controller createur, Lecture lecture){
-		this.createur = createur;
-		this.lecture = lecture;
+
+	private String lectureKey;
+
+	public LectureItem(String lectureKey){
+		this.lectureKey= lectureKey;
 	}
-	
-	public Lecture getLecture(){return this.lecture;}
-	
-	public void use(){
-		createur.getStudent().followLecture(lecture);
+
+	public String getLectureKey() {
+		return lectureKey;
 	}
-	
+
 	@Override
 	public String toString() {
-		String str ="LectureItem, if you read me, you will obtain the lecture "+lecture+"\n";
-	
-		
-		return str;
+		//String str ="LectureItem, if you read me, you will obtain the lecture "+lecture+"\n";
+		return "" /*str*/;
 	}
-	
-
 }

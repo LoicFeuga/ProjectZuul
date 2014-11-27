@@ -54,32 +54,31 @@ public class Game {
 
 		Book b = new model.item.Book("Objects first", createur);
 
-		LectureItem li = new LectureItem(createur, listLecture.get("T"));
 		Tablets t = new Tablets(createur);
 
 		listItem.add(b);
-		listItem.add(li);
 		listItem.add(t);
-		
-		//Item_meaning 
+
+		//Item_meaning
 		/*
 		 * 0 = book
-		 * 1 = LectureItem pour Description Current Lesson
-		 * 2 = Tablets
+		 * 1 = Tablets
 		 */
 	}
 
 
 	public void initLecture(){
-		Lecture l = new Lecture("A fake description","Cours de POO2");
+
+		//LEcture's description is the future key of the HashMap
+		Lecture l = new Lecture("POO0","Cours de POO2","POO0");
 		l.setCatchStudent(true);
-		Lecture l2 = new Lecture("A fake description2","TD de POO2");
+		Lecture l2 = new Lecture("POO1","TD de POO2","POO1");
 		l2.setCatchStudent(true);
-		Lecture lex = new Lecture("Big semester exam", "POO exam");
+		Lecture lex = new Lecture("POOEx", "POO exam","POOEx");
 		lex.setCatchStudent(true);
-		Lecture l3 = new Lecture("A fake description3","TD de AA");
-		Lecture lec = new Lecture("Description","Current lesson");
-		Lecture lec2 = new Lecture("Description2","Current lesson");
+		Lecture l3 = new Lecture("AA","TD de AA","AA");
+		Lecture lec = new Lecture("T","Current lesson","T");
+		Lecture lec2 = new Lecture("T2","Current lesson","T2");
 
 		listLecture.put("POO0",l);
 		listLecture.put("POO1",l2);
@@ -107,21 +106,24 @@ public class Game {
 		library = new Library("Library");
 		exam1 = new Exam("Exam 1",listLecture.get("POOEx"));
 		lunchRoom1 = new LunchRoom("LunchRoom 1");
-		
-		
+
+
 		corridoor1.addItem(listItem.get(0));
-		
+
 		//set exits
 		lab1.setExit("west",lab2);
 		lab2.setExit("east",lab1);
 		corridoor1.setExit("north",lab1);
+		corridoor1.setExit("east",classroom2);
+		corridoor1.setExit("west",classroom1);
 		corridoor1.setExit("south",exam1);
-		corridoor2.setExit("west",classroom1);
+		corridoor2.setExit("west",library);
+		corridoor2.setExit("east",classroom1);
 		classroom1.setExit("west",corridoor2);
 		classroom1.setExit("east",corridoor1);
 		classroom2.setExit("west",corridoor1);
 		classroom2.setExit("east",lunchRoom1);
-		library.setExit("east",corridoor2);
+		library.setExit("west",corridoor2);
 		exam1.setExit("north",corridoor1);
 		lunchRoom1.setExit("west",classroom2);
 
@@ -146,23 +148,63 @@ public class Game {
 
 		Command command;
 		do{
-			command = parser.getCommand(currentRoom.getClass().getSimpleName());
 			checkRoom();
+			command = parser.getCommand(currentRoom.getClass().getSimpleName());
+
 		}while(!processCommand(command));
 		System.out.println("Thank you for playing.  Good bye.");
 	}
 
 	private void checkRoom() {
-
-		//Look at where we are, process to specific controls depending on which type of room we are
+		//Look at where we are, process to specific controls depending on which type of room we
 		if(currentRoom instanceof Lab) {
-			Lab room = (Lab)currentRoom;
-
+			Lab room = (Lab) currentRoom;
+			//if the Lab is for POO
+			if (room.getLect().getCatchStudent()) {
+				//if the student has the lecture for this Lab session
+				if (student.hasLectureItem(room.getLect().getKey())) {
+					System.out.println("You are currently in a POO Lab,\nyou must stay until the sesssion in finished");
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					System.out.println("You are free to leave Lab is over !");
+					room.getLect().setCatchStudent(false);
+					student.addLabItem(listLecture.get(room.getLect().getKey()));
+				}
+				//don't have the required Lecture
+				System.out.println("You do not have the required Lecture to do this Lab, come back when you have it !");
+				room.getLect().setCatchStudent(false);
+			}
+			//This Lab is not for POO
+			System.out.println("You can leave this Lab whenever you want !");
 		}else if(currentRoom instanceof Classroom) {
 			Classroom room = (Classroom)currentRoom;
-
+			if(room.getLect().getCatchStudent()){
+				System.out.println("You are currently in a POO lecture,\nyou must stay until the sesssion in finished");
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				System.out.println("You are free to leave Lecture is over !");
+				//unblock the student and add the Lecture to his LectureItem inventory !
+				room.getLect().setCatchStudent(false);
+				student.addLectureItem(listLecture.get(room.getLect().getKey()));
+			}
+			//This Lecture is not for POO
+			System.out.println("You can leave this Lecture whenever you want !");
 		}else if(currentRoom instanceof Exam){
 			Exam room = (Exam)currentRoom;
+			//if it's a POO exam
+			if(room.getLect().getCatchStudent()){
+				//if the student has all the POO Lab and Lectures.
+				if(student.hasAllLectureLab()){
+					//if the student has enough energy
+
+				}
+			}
 
 		}
 	}
@@ -328,7 +370,7 @@ public class Game {
 	public HashMap<String, Lecture> getListLecture(){
 		return listLecture;
 	}
-	
+
 	public Student getStudent(){
 		return student;
 	}

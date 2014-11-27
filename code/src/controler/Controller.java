@@ -13,7 +13,6 @@ import model.Student;
  */
 
 public class Controller {
-	private Student student;
 	private Game game;
 
 	public Controller(){
@@ -22,19 +21,11 @@ public class Controller {
 	}
 
 
-	public void setStudent(Student student){
-		this.student = student;
-	}
-
-	public Student getStudent(){
-		return this.student;
-	}
-
 	public Item getItem(int i){
 		return (Item) game.getListItem().get(i);
 	}
 
-	public void followAllPOOLecture(){
+/*	public void followAllPOOLecture(){
 
 		Iterator<String> i = game.getListLecture().keySet().iterator();
 		String chaine;
@@ -46,7 +37,7 @@ public class Controller {
 			}
 		}
 
-	}
+	}*/
 
 	public Lecture getRandomLecture(){
 
@@ -59,7 +50,7 @@ public class Controller {
 	}
 
 	//Test ok
-	public Lecture getRandomLectureThanStudentDontKnow(){
+	/*public Lecture getRandomLectureThanStudentDontKnow(){
 		int rand = 0;
 		String chaine = null;
 		do{
@@ -110,7 +101,7 @@ public class Controller {
 
 
 		return game.getListLecture().get(chaine);
-	}
+	}*/
 
 	public Game getGame(){
 		return game;
