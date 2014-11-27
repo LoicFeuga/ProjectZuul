@@ -134,8 +134,24 @@ public class Game {
 		Command command;
 		do{
 			command = parser.getCommand(currentRoom.getClass().getSimpleName());
+			checkRoom();
 		}while(!processCommand(command));
 		System.out.println("Thank you for playing.  Good bye.");
+	}
+
+	private void checkRoom() {
+
+		//Look at where we are, process to specific controls depending on which type of room we are
+		if(currentRoom instanceof Lab) {
+			Lab room = (Lab)currentRoom;
+
+		}else if(currentRoom instanceof Classroom) {
+			Classroom room = (Classroom)currentRoom;
+
+		}else if(currentRoom instanceof Exam){
+			Exam room = (Exam)currentRoom;
+
+		}
 	}
 
 	/**
