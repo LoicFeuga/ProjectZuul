@@ -40,4 +40,10 @@ public class CommandWords
         // if we get here, the string was not found in the commands
         return false;
     }
+    
+    public void printCommand(){
+    	for(int i = 0 ; i < VALID_COMMANDS.length;i++){
+    		System.out.println(VALID_COMMANDS[i]+ " ");
+    	}
+    }
 }
