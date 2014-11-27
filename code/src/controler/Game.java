@@ -64,6 +64,8 @@ public class Game {
 		l.setCatchStudent(true);
 		Lecture l2 = new Lecture("A fake description2","TD de POO2");
 		l2.setCatchStudent(true);
+		Lecture lex = new Lecture("Big semester exam", "POO exam");
+		lex.setCatchStudent(true);
 		Lecture l3 = new Lecture("A fake description3","TD de AA");
 		Lecture lec = new Lecture("Description","Current lesson");
 		Lecture lec2 = new Lecture("Description2","Current lesson");
@@ -192,9 +194,9 @@ public class Game {
 			return quit(command);
 		}else if(commandWord.equals("searchobject")){
 			seeAllObjectInRoom();
-		}else if(commandWord.equals("switchonlight")){
+		}else if(commandWord.equals("lighton")){
 			((Corridor) currentRoom).switchOnLight();
-		}else if(commandWord.equals("switchofflight")){
+		}else if(commandWord.equals("lightoff")){
 			((Corridor) currentRoom).switchOffLight();
 		}
 

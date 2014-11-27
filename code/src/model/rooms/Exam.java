@@ -5,7 +5,8 @@ import model.rooms.Lecture;
 
 import java.util.Scanner;
 
-public class Exam extends Lecture {
+public class Exam extends Room {
+
 	private Lecture lect;
 	private int energyNeeded;
 	private QCM qcm;
