@@ -43,7 +43,11 @@ public class CommandWords
     
     public static void printCommand(){
     	for(int i = 0 ; i < VALID_COMMANDS.length;i++){
-    		System.out.println(VALID_COMMANDS[i]+ " ");
+    		if(i!=0){
+    			System.out.print(", ");
+    		}
+    		System.out.print(VALID_COMMANDS[i]+ "");
     	}
+    	System.out.println("");
     }
 }
