@@ -30,7 +30,7 @@ public class CommandWords
             "go", "quit","searchobject", "help", "cheat"
     };
     private static final String[] CORRIDOOR = {
-            "go", "quit","searchobject","lighton","lightoff", "help"
+            "go", "quit","searchobject","getobject","usebook","lighton","lightoff", "help"
     };
     private static final String[] LUNCHROOM = {
             "go", "quit","searchobject", "help", "drink"

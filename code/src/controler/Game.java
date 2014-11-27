@@ -3,6 +3,8 @@ package controler;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import model.item.*;
+import model.Student;
 import model.item.Item;
 import model.item.LectureItem;
 import model.item.Tablets;
@@ -27,9 +29,8 @@ import model.rooms.*;
 
 public class Game {
 	private Parser parser;
+	private Student student;
 	private Room currentRoom;
-
-
 	private HashMap<String,Lecture> listLecture;
 	private ArrayList<Item> listItem;
 	private Controller createur;
@@ -39,24 +40,33 @@ public class Game {
 	 */
 	public Game(Controller createur) {
 
+		this.createur = createur;
 		listLecture = new HashMap<String,Lecture>();
 		listItem = new ArrayList<>();
 		initLecture();
 		initItem();
 		createRooms();
 		parser = new Parser();
-		this.createur = createur;
+		student = new Student();
 	}
 
 	public void initItem(){
 
-		model.item.Book b = new model.item.Book("Objects first", createur);
+		Book b = new model.item.Book("Objects first", createur);
+
 		LectureItem li = new LectureItem(createur, listLecture.get("T"));
 		Tablets t = new Tablets(createur);
 
 		listItem.add(b);
 		listItem.add(li);
 		listItem.add(t);
+		
+		//Item_meaning 
+		/*
+		 * 0 = book
+		 * 1 = LectureItem pour Description Current Lesson
+		 * 2 = Tablets
+		 */
 	}
 
 
@@ -97,7 +107,10 @@ public class Game {
 		library = new Library("Library");
 		exam1 = new Exam("Exam 1",listLecture.get("POOEx"));
 		lunchRoom1 = new LunchRoom("LunchRoom 1");
-
+		
+		
+		corridoor1.addItem(listItem.get(0));
+		
 		//set exits
 		lab1.setExit("west",lab2);
 		lab2.setExit("east",lab1);
@@ -216,6 +229,12 @@ public class Game {
 			((Corridor) currentRoom).switchOnLight();
 		}else if(commandWord.equals("lightoff")){
 			((Corridor) currentRoom).switchOffLight();
+		}else if(commandWord.equals("getobject")){
+			student.getItem((Item) currentRoom.getListItem().get(0));
+			System.out.println("Item "+currentRoom.getListItem().get(0)+" took ");
+			currentRoom.getListItem().remove(0);
+		}else if(commandWord.equals("usebook")){
+			student.useBook();
 		}
 
 		return wantToQuit;
@@ -308,5 +327,9 @@ public class Game {
 
 	public HashMap<String, Lecture> getListLecture(){
 		return listLecture;
+	}
+	
+	public Student getStudent(){
+		return student;
 	}
 }

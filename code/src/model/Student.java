@@ -3,8 +3,9 @@ package model;
  * @author loic
  */
 import java.util.ArrayList;
-import model.rooms.Lecture;
 
+import model.rooms.Lecture;
+import model.item.Book;
 import model.item.Item;
 import model.rooms.Lecture;
 
@@ -112,5 +113,13 @@ public class Student {
 		}
 		
 		return false;
+	}
+	
+	public void useBook(){
+		for(int i = 0; i < listItem.size();i++){
+			if(listItem.get(i) instanceof Book){
+				((Book)listItem.get(i)).read();
+			}
+		}
 	}
 }

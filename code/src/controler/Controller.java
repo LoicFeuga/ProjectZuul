@@ -42,7 +42,7 @@ public class Controller {
 		while(i.hasNext()){
 			chaine = i.next();
 			if(chaine.contains("POO")){
-				student.followLecture(game.getListLecture().get(chaine));
+				game.getStudent().followLecture(game.getListLecture().get(chaine));
 			}
 		}
 
