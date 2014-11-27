@@ -5,10 +5,10 @@ package model.time;
 import java.util.Date;
 import java.util.Observable;
 
-import controler.Controler;
+import controler.Controller;
 
 public class Time extends Observable implements Runnable{
-	private Controler createur;
+	private Controller createur;
 	private long all;
 	private int hour;
 	private int minutes;
@@ -18,7 +18,7 @@ public class Time extends Observable implements Runnable{
 	/**
 	 * Créer un objet gerant le temps
 	 */
-	public Time(Controler createur){
+	public Time(Controller createur){
 		this.createur = createur;
 
 		Date d = new Date();
