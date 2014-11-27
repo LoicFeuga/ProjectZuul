@@ -29,6 +29,7 @@ public class Game {
 	private Parser parser;
 	private Room currentRoom;
 
+
 	private HashMap<String,Lecture> listLecture;
 	private ArrayList<Item> listItem;
 	private Controller createur;
@@ -131,7 +132,7 @@ public class Game {
 
 		Command command;
 		do{
-			command = parser.getCommand();
+			command = parser.getCommand(currentRoom.getClass().getSimpleName());
 		}while(!processCommand(command));
 		System.out.println("Thank you for playing.  Good bye.");
 	}
@@ -187,7 +188,7 @@ public class Game {
 
 		String commandWord = command.getCommandWord();
 		if (commandWord.equals("help")) {
-			commandWord.printCommand();
+			CommandWords.printCommand(currentRoom.getClass().getSimpleName());
 		} else if (commandWord.equals("go")) {
 			goRoom(command);
 		} else if (commandWord.equals("quit")) {
@@ -229,9 +230,6 @@ public class Game {
 	 * message and a list of the command words.
 	 */
 	private void printHelp() {
-		System.out.println("You are lost. You are alone. You wander");
-		System.out.println("around at the university.");
-		System.out.println();
 		System.out.println("Your command words are:");
 		System.out.println("   go quit help ");
 	}

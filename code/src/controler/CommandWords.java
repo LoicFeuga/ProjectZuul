@@ -1,9 +1,13 @@
 package controler;
 
+import java.util.HashMap;
+
+import java.util.HashMap;
+
 /**
  * This class is part of the "World of Zuul" application. 
  * "World of Zuul" is a very simple, text based adventure game.  
- * 
+ *
  * This class holds an enumeration of all command words known to the game.
  * It is used to recognise commands as they are typed in.
  *
@@ -13,17 +17,39 @@ package controler;
 
 public class CommandWords
 {
-    // a constant array that holds all valid command words
-    private static final String[] VALID_COMMANDS = {
-        "go", "quit","searchobject","lighton","lightoff", "help"
-    };
+    // a constant hash that holds all valid command words for each rooms
 
+    private static HashMap<String,String[]> listCommRooms;
+    private static final String[] CLASSROOM = {
+            "go", "quit","searchobject", "help"
+    };
+    private static final String[] LAB = {
+            "go", "quit","searchobject", "help"
+    };
+    private static final String[] EXAM = {
+            "go", "quit","searchobject", "help",
+    };
+    private static final String[] CORRIDOOR = {
+            "go", "quit","searchobject","lighton","lightoff", "help"
+    };
+    private static final String[] LUNCHROOM = {
+            "go", "quit","searchobject", "help", "drink"
+    };
+    private static final String[] LIBRARY = {
+            "go", "quit","searchobject", "help", "read"
+    };
     /**
      * Constructor - initialise the command words.
      */
     public CommandWords()
     {
-        // nothing to do at the moment...
+        listCommRooms = new HashMap<>();
+        listCommRooms.put("Classroom",CLASSROOM);
+        listCommRooms.put("Lab",LAB);
+        listCommRooms.put("Exam",EXAM);
+        listCommRooms.put("Corridoor",CORRIDOOR);
+        listCommRooms.put("LunchRoom",LUNCHROOM);
+        listCommRooms.put("Library",LIBRARY);
     }
 
     /**
@@ -31,22 +57,22 @@ public class CommandWords
      * @return true if a given string is a valid command,
      * false if it isn't.
      */
-    public boolean isCommand(String aString)
+    public boolean isCommand(String aString, String room)
     {
-        for(int i = 0; i < VALID_COMMANDS.length; i++) {
-            if(VALID_COMMANDS[i].equals(aString))
+        for(int i = 0; i < listCommRooms.get(room).length; i++) {
+            if(listCommRooms.get(room)[i].equals(aString))
                 return true;
         }
         // if we get here, the string was not found in the commands
         return false;
     }
     
-    public static void printCommand(){
-    	for(int i = 0 ; i < VALID_COMMANDS.length;i++){
+    public static void printCommand(String room){
+    	for(int i = 0 ; i <  listCommRooms.get(room).length;i++){
     		if(i!=0){
     			System.out.print(", ");
     		}
-    		System.out.print(VALID_COMMANDS[i]+ "");
+    		System.out.print( listCommRooms.get(room)[i]+ "");
     	}
     	System.out.println("");
     }
