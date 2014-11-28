@@ -115,6 +115,7 @@ public class Game {
 
 		//set exits
 		lab1.setExit("west",lab2);
+		lab1.setExit("south", corridoor1);
 		lab2.setExit("east",lab1);
 		corridoor1.setExit("north",lab1);
 		corridoor1.setExit("east",classroom2);
@@ -126,7 +127,7 @@ public class Game {
 		classroom1.setExit("east",corridoor1);
 		classroom2.setExit("west",corridoor1);
 		classroom2.setExit("east",lunchRoom1);
-		library.setExit("west",corridoor2);
+		library.setExit("east",corridoor2);
 		exam1.setExit("north",corridoor1);
 		lunchRoom1.setExit("west",classroom2);
 
@@ -296,7 +297,6 @@ public class Game {
 
 	private void printLocationInfo() {
 		System.out.println("You are " + currentRoom.getDescription());
-		System.out.println(currentRoom.toString());
 		System.out.println(currentRoom.getExitString());
 		System.out.println();
 	}
