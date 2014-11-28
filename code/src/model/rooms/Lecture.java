@@ -6,6 +6,7 @@ public class Lecture extends Room {
 
 	private String currentLecture;
 	private String key;
+	private boolean isPOO;
 	private boolean catchStudent;
 
 	public Lecture(String description) {
@@ -43,6 +44,14 @@ public class Lecture extends Room {
 
 	public String getKey() {
 		return key;
+	}
+
+	public void setPOO(boolean isPOO) {
+		this.isPOO = isPOO;
+	}
+
+	public boolean isPOO() {
+		return isPOO;
 	}
 
 	@Override

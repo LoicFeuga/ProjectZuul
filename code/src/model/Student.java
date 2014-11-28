@@ -3,6 +3,7 @@ package model;
  * @author loic
  */
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import model.item.LabItem;
 import model.item.LectureItem;
@@ -77,8 +78,29 @@ public class Student {
 		energyLevel-=number;
 	}
 
-	public boolean hasAllLectureLab(){
+	public boolean hasAllLectureLab(HashMap<String,Lecture> listLect){
+		boolean check = false;
 
+		for (HashMap.Entry<String, Lecture> entry : listLect.entrySet()) {
+			if(entry.getValue().isPOO()) {
+				for (int i = 0; i < listLecture.size(); i++) {
+					System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+					if (listLecture.get(i).getLectureKey().equals(entry.getKey()) && listLab.get(i).getLectureKey().equals(entry.getKey())) {
+						check = true;
+					}
+				}
+				if (!check) return false;
+			}
+		}
+		return true;
+	}
+
+	public boolean hasEnoughEnergy(int energNeeded) {
+		if(this.energyLevel >= energNeeded){
+			return  true;
+		}else{
+			return false;
+		}
 	}
 
 	public void printOwnItem(){
@@ -137,6 +159,7 @@ public class Student {
 			}
 		}
 	}
+
 
 
 }

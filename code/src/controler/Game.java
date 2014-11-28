@@ -72,10 +72,13 @@ public class Game {
 		//LEcture's description is the future key of the HashMap
 		Lecture l = new Lecture("POO0","Cours de POO2","POO0");
 		l.setCatchStudent(true);
+		l.setPOO(true);
 		Lecture l2 = new Lecture("POO1","TD de POO2","POO1");
 		l2.setCatchStudent(true);
+		l2.setPOO(true);
 		Lecture lex = new Lecture("POOEx", "POO exam","POOEx");
 		lex.setCatchStudent(true);
+		lex.setPOO(true);
 		Lecture l3 = new Lecture("AA","TD de AA","AA");
 		Lecture lec = new Lecture("T","Current lesson","T");
 		Lecture lec2 = new Lecture("T2","Current lesson","T2");
@@ -200,9 +203,18 @@ public class Game {
 			//if it's a POO exam
 			if(room.getLect().getCatchStudent()){
 				//if the student has all the POO Lab and Lectures.
-				if(student.hasAllLectureLab()){
+				if(student.hasAllLectureLab(listLecture)){
 					//if the student has enough energy
+					if(student.hasEnoughEnergy(room.getEnergyNeeded())){
+						//start exam
+						room.showQCM();
+						room.takeExam();
+					}else{
+						System.out.println("Sorry, you don't have enough energy to do this exam !");
+					}
 
+				}else {
+					System.out.println("You don't have all the required Lab and Lectures");
 				}
 			}
 

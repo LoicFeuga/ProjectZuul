@@ -90,4 +90,8 @@ public class Exam extends Room {
 	public void setLect(Lecture lect) {
 		this.lect = lect;
 	}
+
+	public int getEnergyNeeded() {
+		return energyNeeded;
+	}
 }
