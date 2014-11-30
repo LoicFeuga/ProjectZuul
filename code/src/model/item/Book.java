@@ -17,7 +17,7 @@ public class Book extends Item {
 
 	public void read(Student student, HashMap<String, Lecture> listLecture) {
 		if("Objects first".equals(title)){
-			student.followAllLectures(student, listLecture);
+			student.followAllLectures(listLecture);
 		}
 		else{
 			System.out.println("You didn't learn anything ,this book wasn't about OOP...");

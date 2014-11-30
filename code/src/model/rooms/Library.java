@@ -17,7 +17,7 @@ public class Library extends Room {
 
 	public void readBook(Student stud, HashMap<String, Lecture> listLect) {
 		//add all Lectures the student don't have yet.
-		stud.followAllLectures(stud,listLect);
+		stud.followAllLectures(listLect);
 	}
 
 	public boolean isClosed() {

@@ -135,8 +135,6 @@ public class Student {
 		}else{
 			return false;
 		}
-
-
 		if(energyLevel == student.energyLevel && listItem.equals(student.listItem)){
 			return true;
 		}
@@ -152,16 +150,16 @@ public class Student {
 		return st;
 	}
 
-	public void useBook(Student stud, HashMap<String, Lecture> listLecture){
+	public void useBook(HashMap<String, Lecture> listLecture){
 		for(int i = 0; i < listItem.size();i++){
 			if(listItem.get(i) instanceof Book){
-				((Book)listItem.get(i)).read(stud,listLecture);
+				((Book)listItem.get(i)).read(this,listLecture);
 			}
 		}
 	}
 
 
-	public void followAllLectures(Student stud, HashMap<String, Lecture> listLect) {
+	public void followAllLectures(HashMap<String, Lecture> listLect) {
 
 		for (HashMap.Entry<String, Lecture> entry : listLect.entrySet()) {
 			if (entry.getValue().isPOO()) {
@@ -177,7 +175,7 @@ public class Student {
 		}
 	}
 
-	public void followLectureOrLab(Student stud, HashMap<String, Lecture> listLect) {
+	public void followLectureOrLab(HashMap<String, Lecture> listLect) {
 
 		boolean added= false;
 
@@ -187,13 +185,27 @@ public class Student {
 					System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
 					//if the student doesn't have this POO lecture
 					if (!listLecture.get(i).getLectureKey().equals(entry.getKey())) {
-						//we add it
-						listLecture.add(new LectureItem(entry.getKey()));
+						//we add a Lecture or a Lab 0=lecture 1=lab
+						int rand = 0 + (int)(Math.random() * ((1 -0) + 1));
+						if(rand == 0){
+							listLecture.add(new LectureItem(entry.getKey()));
+						}else{
+							listLab.add(new LabItem(entry.getKey()));
+						}
 						break loop;
 					}
 				}
 				System.out.println("Lecture added");
 			}
 		}
+	}
+
+	public LectureItem forgetLecture() {
+		int rand = 0 + (int)(Math.random() * ((1 - this.getListLecture().size()) + 1));
+		return listLecture.remove(rand);
+	}
+
+	public void playtablet() {
+		forgetLecture();
 	}
 }

@@ -222,8 +222,8 @@ public class Game {
 				System.out.println("Sorry the Library is closed, try later!");
 				goRoom(new Command("go", currentRoom.getExits().keySet().iterator().next()));
 			}
-		}else if(currentRoom instanceof Library) {
-
+		}else if(currentRoom instanceof LunchRoom) {
+			((LunchRoom) currentRoom).playingTableFootball(student);
 		}
 	}
 
@@ -308,7 +308,7 @@ public class Game {
 				getItems();
 			}
 		}else if(commandWord.equals("usebook")){
-			student.useBook(student,listLecture);
+			student.useBook(listLecture);
 		}else if(commandWord.equals("read")){
 			if(currentRoom instanceof Library){
 				((Library)currentRoom).readBook(student,listLecture);
@@ -317,6 +317,10 @@ public class Game {
 			}
 		}else if(commandWord.equals("playtablet")){
 			//PLAY TABLET
+			student.playtablet();
+		}else if(commandWord.equals("readtablet")){
+			//learn a lecture or lab
+			student.followLectureOrLab(listLecture);
 		}
 
 		return wantToQuit;
@@ -332,11 +336,16 @@ public class Game {
 	}
 
 	private void printLocationInfo() {
-		System.out.println("You are at " + currentRoom.getDescription());
+		System.out.println("########################################");
+		System.out.println("# You are at " + currentRoom.getDescription()+ "#");
+		System.out.println("########################################");
 		System.out.println(currentRoom.getExitString());
 		System.out.println();
 	}
 
+	/*
+	List all the object in the room
+	 */
 	public void seeAllObjectInRoom(){
 		ArrayList l = currentRoom.getListItem();
 
@@ -347,17 +356,6 @@ public class Game {
 		if(l.size() == 0){
 			System.out.println("No item in this room");
 		}
-	}
-
-	// implementations of user commands:
-
-	/**
-	 * Print out some help information. Here we print some stupid, cryptic
-	 * message and a list of the command words.
-	 */
-	private void printHelp() {
-		System.out.println("Your command words are:");
-		System.out.println("   go quit help ");
 	}
 
 	/**

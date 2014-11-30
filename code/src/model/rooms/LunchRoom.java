@@ -21,8 +21,7 @@ public class LunchRoom extends Room {
 
 		if(rand == 0){
 			System.out.println("You are playing babyfoot !");
-			rand = 0 + (int)(Math.random() * ((1 - stud.getListLecture().size()) + 1));
-			LectureItem it = stud.getListLecture().remove(rand);
+			LectureItem it = stud.forgetLecture();
 			System.out.println("You forgot the Lecture: "+it.getLectureKey());
 		}
 	}

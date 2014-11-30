@@ -21,22 +21,22 @@ public class CommandWords
 
     private static HashMap<String,String[]> listCommRooms;
     private static final String[] CLASSROOM = {
-            "go", "quit","searchobject", "help","playtablet"
+            "go", "quit","searchobject", "help","playtablet","readtablet"
     };
     private static final String[] LAB = {
-            "go", "quit","searchobject", "help","playtablet"
+            "go", "quit","searchobject", "help","playtablet","readtablet"
     };
     private static final String[] EXAM = {
             "go", "quit","searchobject", "help", "cheat"
     };
     private static final String[] CORRIDOOR = {
-            "go", "quit","searchobject","getobject","usebook","lighton","lightoff", "help","playtablet"
+            "go", "quit","searchobject","getobject","usebook","lighton","lightoff", "help","playtablet","readtablet"
     };
     private static final String[] LUNCHROOM = {
-            "go", "quit","searchobject", "help", "drink","playtablet"
+            "go", "quit","searchobject", "help", "drink","playtablet","readtablet"
     };
     private static final String[] LIBRARY = {
-            "go", "quit","searchobject", "help", "read","playtablet"
+            "go", "quit","searchobject", "help", "read","playtablet","readtablet"
     };
     /**
      * Constructor - initialise the command words.
