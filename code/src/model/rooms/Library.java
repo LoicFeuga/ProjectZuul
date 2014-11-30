@@ -1,29 +1,28 @@
 package model.rooms;
 
-import model.item.Item;
 import model.Student;
 
-import java.util.ArrayList;
-import java.util.Date;
+
+import java.util.HashMap;
 
 public class Library extends Room {
 
-	private Date timeOpen;
-	private Date timeClose;
 
+	private boolean closed;
 
 	public Library(String description) {
 		super(description);
-		// TODO Auto-generated constructor stub
+		closed=false;
 	}
 
-	public void readBook(Student stud) {
-		//add a Lecture the student don't have yet.
-		//stud.followLecture();
+	public void readBook(Student stud, HashMap<String, Lecture> listLect) {
+		//add all Lectures the student don't have yet.
+		stud.followAllLectures(stud,listLect);
 	}
 
-	public void setOpenCloseTime(Date open, Date close) {
-		this.timeClose=close;
-		this.timeOpen=open;
+	public boolean isClosed() {
+		int rand = 0 + (int)(Math.random() * ((1 - 0) + 1));
+		closed = (rand!=0);
+		return closed;
 	}
 }

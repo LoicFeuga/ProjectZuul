@@ -30,7 +30,7 @@ public class Tests_Item_N1 {
 		System.out.println("++Affichage des Lecture suivi");System.out.print("\t");
 		st.printLectureFollowed();
 		
-		((Book)st.getListItem().get(0)).read();
+		//((Book)st.getListItem().get(0)).read();
 		
 		System.out.println("++Affichage des Lecture suivi");System.out.print("\t");
 		st.printLectureFollowed();
@@ -44,7 +44,7 @@ public class Tests_Item_N1 {
 
 		
 		st.printLectureFollowed();
-		c.printListLecture();
+		//c.printListLecture();
 		System.out.println("+M�thode getRandomThanStudentKnow");
 		//System.out.println(c.getRandomLectureThanStudentKnow());
 		System.out.println("+M�thode getRandomThanStudentDontKnow");

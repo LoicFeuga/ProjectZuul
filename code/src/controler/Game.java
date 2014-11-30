@@ -6,7 +6,6 @@ import java.util.HashMap;
 import model.item.*;
 import model.Student;
 import model.item.Item;
-import model.item.LectureItem;
 import model.item.Tablets;
 import model.rooms.*;
 
@@ -52,7 +51,7 @@ public class Game {
 
 	public void initItem(){
 
-		Book b = new model.item.Book("Objects first", createur);
+		Book b = new model.item.Book("Objects first");
 
 		Tablets t = new Tablets(createur);
 
@@ -169,7 +168,7 @@ public class Game {
 				if (student.hasLectureItem(room.getLect().getKey())) {
 					System.out.println("You are currently in a POO Lab,\nyou must stay until the sesssion in finished");
 					try {
-						Thread.sleep(1000);
+						Thread.sleep(3000);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -188,7 +187,7 @@ public class Game {
 			if(room.getLect().getCatchStudent()){
 				System.out.println("You are currently in a POO lecture,\nyou must stay until the sesssion in finished");
 				try {
-					Thread.sleep(1000);
+					Thread.sleep(3000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -218,6 +217,12 @@ public class Game {
 					System.out.println("You don't have all the required Lab and Lectures");
 				}
 			}
+		}else if(currentRoom instanceof Library) {
+			if (((Library) currentRoom).isClosed() == true) {
+				System.out.println("Sorry the Library is closed, try later!");
+				goRoom(new Command("go", currentRoom.getExits().keySet().iterator().next()));
+			}
+		}else if(currentRoom instanceof Library) {
 
 		}
 	}
@@ -279,24 +284,55 @@ public class Game {
 		} else if (commandWord.equals("quit")) {
 			return quit(command);
 		}else if(commandWord.equals("searchobject")){
-			seeAllObjectInRoom();
+			if(currentRoom instanceof Corridor){
+				if(((Corridor)currentRoom).isLigthState()== false){
+					System.out.println("You cannot see anything the light is turned off !");
+				}else{
+					seeAllObjectInRoom();
+				}
+			}else {
+				seeAllObjectInRoom();
+			}
 		}else if(commandWord.equals("lighton")){
 			((Corridor) currentRoom).switchOnLight();
 		}else if(commandWord.equals("lightoff")){
 			((Corridor) currentRoom).switchOffLight();
 		}else if(commandWord.equals("getobject")){
-			student.getItem((Item) currentRoom.getListItem().get(0));
-			System.out.println("Item "+currentRoom.getListItem().get(0)+" took ");
-			currentRoom.getListItem().remove(0);
+			if(currentRoom instanceof Corridor){
+				if(((Corridor)currentRoom).isLigthState()== false){
+					System.out.println("You cannot see anything the light is turned off !");
+				}else{
+					getItems();
+				}
+			}else {
+				getItems();
+			}
 		}else if(commandWord.equals("usebook")){
-			student.useBook();
+			student.useBook(student,listLecture);
+		}else if(commandWord.equals("read")){
+			if(currentRoom instanceof Library){
+				((Library)currentRoom).readBook(student,listLecture);
+			}else{
+				System.out.println("You are supposed to be in the library to have something to read...");
+			}
+		}else if(commandWord.equals("playtablet")){
+			//PLAY TABLET
 		}
 
 		return wantToQuit;
 	}
+	public void getItems() {
+		if(currentRoom.getListItem().size() != 0) {
+			student.getItem((Item) currentRoom.getListItem().get(0));
+			System.out.println("Item " + currentRoom.getListItem().get(0) + " took ");
+			currentRoom.getListItem().remove(0);
+		}else{
+			System.out.println("There is no item left in this room");
+		}
+	}
 
 	private void printLocationInfo() {
-		System.out.println("You are " + currentRoom.getDescription());
+		System.out.println("You are at " + currentRoom.getDescription());
 		System.out.println(currentRoom.getExitString());
 		System.out.println();
 	}
@@ -386,4 +422,6 @@ public class Game {
 	public Student getStudent(){
 		return student;
 	}
+
+
 }

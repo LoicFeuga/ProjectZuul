@@ -1,31 +1,32 @@
- package model.item;
+package model.item;
 /**
  * @author loic
  */
 import controler.Controller;
+import model.Student;
+import model.rooms.Lecture;
 
- public class Book extends Item {
+import java.util.HashMap;
+
+public class Book extends Item {
 	private String title;
-	private Controller createur;
 
-	public Book(String title, Controller createur){
+	public Book(String title){
 		this.title = title;
-		this.createur = createur;
 	}
-	
-	public void read() {
-		if(!"Objects first".equals(title)){
-			//owner.followLecture(null);
+
+	public void read(Student student, HashMap<String, Lecture> listLecture) {
+		if("Objects first".equals(title)){
+			student.followAllLectures(student, listLecture);
 		}
 		else{
-			//createur.followAllPOOLecture();
+			System.out.println("You didn't learn anything ,this book wasn't about OOP...");
 		}
 	}
-	
+
 	@Override
 	public String toString() {
-		String str ="Book, if you read me, you will obtain all POO2 lecture";
-		
+		String str ="Book, if you read me, you will obtain all OOP lecture";
 		return str;
 	}
 }

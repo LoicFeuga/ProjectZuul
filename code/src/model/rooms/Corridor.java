@@ -29,7 +29,11 @@ public class Corridor extends Room {
 		}else
 			System.out.println("Light is already turned off");
 	}
-	
+
+	public boolean isLigthState() {
+		return ligthState;
+	}
+
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub

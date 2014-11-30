@@ -131,6 +131,7 @@ public class Room {
 	}
 
 
-
-
+	public HashMap<String,Room> getExits() {
+		return exits;
+	}
 }

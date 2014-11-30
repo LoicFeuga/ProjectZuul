@@ -8,7 +8,7 @@ import model.rooms.Room;
 public abstract class Item {
 	public Student owner;
 	public Room position;
-	
+
 	public Student getOwner() {
 		return owner;
 	}

@@ -152,14 +152,48 @@ public class Student {
 		return st;
 	}
 
-	public void useBook(){
+	public void useBook(Student stud, HashMap<String, Lecture> listLecture){
 		for(int i = 0; i < listItem.size();i++){
 			if(listItem.get(i) instanceof Book){
-				((Book)listItem.get(i)).read();
+				((Book)listItem.get(i)).read(stud,listLecture);
 			}
 		}
 	}
 
 
+	public void followAllLectures(Student stud, HashMap<String, Lecture> listLect) {
 
+		for (HashMap.Entry<String, Lecture> entry : listLect.entrySet()) {
+			if (entry.getValue().isPOO()) {
+				for (int i = 0; i < listLecture.size(); i++) {
+					System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+					//if the student doesn't have this POO lecture
+					if (!listLecture.get(i).getLectureKey().equals(entry.getKey())) {
+						//we add it
+						listLecture.add(new LectureItem(entry.getKey()));
+					}
+				}
+			}
+		}
+	}
+
+	public void followLectureOrLab(Student stud, HashMap<String, Lecture> listLect) {
+
+		boolean added= false;
+
+		loop: for (HashMap.Entry<String, Lecture> entry : listLect.entrySet()) {
+			if (entry.getValue().isPOO()) {
+				for (int i = 0; i < listLecture.size(); i++) {
+					System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+					//if the student doesn't have this POO lecture
+					if (!listLecture.get(i).getLectureKey().equals(entry.getKey())) {
+						//we add it
+						listLecture.add(new LectureItem(entry.getKey()));
+						break loop;
+					}
+				}
+				System.out.println("Lecture added");
+			}
+		}
+	}
 }
