@@ -220,6 +220,7 @@ public class Game {
 						//start exam
 						room.showQCM();
 						room.takeExam();
+						room.getLect().setCatchStudent(false);
 					}else{
 						System.out.println("Sorry, you don't have enough energy to do this exam !");
 					}
