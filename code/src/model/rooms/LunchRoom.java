@@ -18,8 +18,8 @@ public class LunchRoom extends Room {
 
 	public void playingTableFootball(Student stud) {
 		int rand = 0 + (int)(Math.random() * ((1 - 0) + 1));
-
-		if(rand == 0){
+		
+		if(rand == 0 && stud.getListLecture().size() > 0){
 			System.out.println("You are playing babyfoot !");
 			LectureItem it = stud.forgetLecture();
 			System.out.println("You forgot the Lecture: "+it.getLectureKey());
