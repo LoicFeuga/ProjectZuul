@@ -64,7 +64,7 @@ public class Time extends Observable implements Runnable{
 	}
 	
 	public boolean openLibrary(){
-		if(hour > 9 && hour < 17 ){
+		if(hour > 9 && hour < 12 ){
 
 			return true;
 		}else return false;
