@@ -223,10 +223,12 @@ public class Game {
 						room.getLect().setCatchStudent(false);
 					}else{
 						System.out.println("Sorry, you don't have enough energy to do this exam !");
+						room.getLect().setCatchStudent(false);
 					}
 
 				}else {
 					System.out.println("You don't have all the required Lab and Lectures");
+					room.getLect().setCatchStudent(false);
 				}
 			}
 		}else if(currentRoom instanceof Library) {
