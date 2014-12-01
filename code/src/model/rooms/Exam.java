@@ -1,8 +1,10 @@
 package model.rooms;
 
 import model.QCM;
+import model.Question;
 import model.rooms.Lecture;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Exam extends Room  {
@@ -22,7 +24,22 @@ public class Exam extends Room  {
 	public Exam(String nom, Lecture lect){
 		super(nom);
 		energyNeeded = 0;
-		qcm = new QCM();
+		//qcm = new QCM();
+		ArrayList questions = new ArrayList<Question>();
+		
+		questions.add(new Question(false, "A class can be transient ? ", qcm));
+		questions.add(new Question(true, "Methods that are marked protected can be called in any subclass of that class ? ", qcm));
+		questions.add(new Question(true, " An abstract class can have non-abstract methods ? ", qcm));
+		questions.add(new Question(false, "Java keywords are written in lowercase as well as uppercase ? ", qcm));
+		questions.add(new Question(true, "Primitive datatypes are allocated on a stack ? ", qcm));
+		questions.add(new Question(false, "Can you compare a boolean to an integer ? ", qcm));
+		questions.add(new Question(true, "The methods wait(), notify() and notifyAll() in Object need to be called from synchronized pieces of code ? ", qcm));
+		questions.add(new Question(true, "Inner classes can be defined within methods ? ", qcm));
+		questions.add(new Question(false, "The modulus operator (%) in Java can be used only with variables of integer type ? ", qcm));
+		questions.add(new Question(false, "Declarations must appear at the start of the body of a Java method ? ", qcm));
+		
+		
+		qcm = new QCM(questions, this);
 		this.lect= lect;
 	}
 	
@@ -59,14 +76,26 @@ public class Exam extends Room  {
 		
 		for(int i = 0 ; i < qcm.getNumberQuestions() ; i++){
 			printQuestion(i);
-			System.out.print("Votre réponse : ");
+			System.out.print("Your answer (true or false) : ");
 			String reponse = sc.nextLine();
 			answerTo(i,answerStringToBoolean(reponse));
 		}
 		
 		qcm.calculateMark();
-		System.out.println("Calcule de votre note ...");
-		System.out.print("Vous avez : "+qcm.getMark());
+		System.out.println("Your mark calculating ...");
+		System.out.print("You have: "+qcm.getMark());
+		
+		if(qcm.getMark() >= 10){
+			System.out.println("#########################");
+			System.out.println("#########################");
+			System.out.println("#########################");
+			System.out.println("#########################");
+			System.out.println("Congratulation !!");
+			System.out.println("#########################");
+			System.out.println("#########################");
+			System.out.println("#########################");
+			System.out.println("#########################");
+		}
 		
 	}
 	
