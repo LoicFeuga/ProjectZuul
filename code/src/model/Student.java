@@ -84,7 +84,7 @@ public class Student {
 		for (HashMap.Entry<String, Lecture> entry : listLect.entrySet()) {
 			if(entry.getValue().isPOO()) {
 				for (int i = 0; i < listLecture.size(); i++) {
-					System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+					
 					if (listLecture.get(i).getLectureKey().equals(entry.getKey()) && listLab.get(i).getLectureKey().equals(entry.getKey())) {
 						check = true;
 					}
