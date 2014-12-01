@@ -44,7 +44,9 @@ public class Game {
 
 		this.createur = createur;
 		time = new Time();
-		time.run();
+
+		time.lets();
+
 		listLecture = new HashMap<String,Lecture>();
 		listItem = new ArrayList<>();
 		initLecture();

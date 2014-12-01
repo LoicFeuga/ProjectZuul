@@ -22,9 +22,9 @@ public class Time extends Observable implements Runnable{
 	public Time(){
 		Date d = new Date();
 		all = d.getTime();
-		hour = d.getHours();
-		minutes = d.getMinutes();
-		secondes = d.getSeconds();
+		hour = 8;
+		minutes = 0;
+		secondes = 0;
 		day = 0;
 		
 	}
@@ -60,11 +60,12 @@ public class Time extends Observable implements Runnable{
 		h.put("lecture",send);
 		h.put("library",openLibrary());
 		setChanged();
-		notifyObservers(send);
+		notifyObservers(h);
 	}
 	
 	public boolean openLibrary(){
 		if(hour > 9 && hour < 17 ){
+
 			return true;
 		}else return false;
 	}
@@ -78,6 +79,9 @@ public class Time extends Observable implements Runnable{
 	
 	public void printTime(){
 		System.out.println(this.toString());
+	}
+	public void lets(){
+		new Thread(this).start();
 	}
 
 }
