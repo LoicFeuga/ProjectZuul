@@ -5,7 +5,7 @@ import model.rooms.Lecture;
 
 import java.util.Scanner;
 
-public class Exam extends Room {
+public class Exam extends Room  {
 
 	private Lecture lect;
 	private int energyNeeded;
@@ -75,7 +75,7 @@ public class Exam extends Room {
 	}
 	
 	public boolean answerStringToBoolean(String answer){
-		if(answer.contains("u")){
+		if(answer.contains("true")){
 			return true;
 		}
 		else {

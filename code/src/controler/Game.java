@@ -2,12 +2,14 @@ package controler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Observer;
 
 import model.item.*;
 import model.Student;
 import model.item.Item;
 import model.item.Tablets;
 import model.rooms.*;
+import model.time.Time;
 
 /**
  * This class is the main class of the "World of Zuul" application.
@@ -33,6 +35,7 @@ public class Game {
 	private HashMap<String,Lecture> listLecture;
 	private ArrayList<Item> listItem;
 	private Controller createur;
+	private Time time;
 
 	/**
 	 * Create the game and initialise its internal map.
@@ -40,6 +43,8 @@ public class Game {
 	public Game(Controller createur) {
 
 		this.createur = createur;
+		time = new Time();
+		time.run();
 		listLecture = new HashMap<String,Lecture>();
 		listItem = new ArrayList<>();
 		initLecture();
@@ -106,9 +111,11 @@ public class Game {
 		classroom1 = new Classroom("ClassRoom 1",listLecture.get("AA"));
 		classroom2 = new Classroom("ClassRoom 2",listLecture.get("POO0"));
 		library = new Library("Library");
+		time.addObserver((Observer) library);
 		exam1 = new Exam("Exam 1",listLecture.get("POOEx"));
 		lunchRoom1 = new LunchRoom("LunchRoom 1");
-
+		time.addObserver((Observer) classroom1);
+		time.addObserver((Observer) classroom2);
 
 		corridoor1.addItem(listItem.get(0));
 
