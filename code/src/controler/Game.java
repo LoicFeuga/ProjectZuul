@@ -172,6 +172,7 @@ public class Game {
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
+					student.decreaseEnergy(20);
 					System.out.println("You are free to leave Lab is over !");
 					room.getLect().setCatchStudent(false);
 					student.addLabItem(listLecture.get(room.getLect().getKey()));
@@ -191,6 +192,7 @@ public class Game {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
+				student.decreaseEnergy(20);
 				System.out.println("You are free to leave Lecture is over !");
 				//unblock the student and add the Lecture to his LectureItem inventory !
 				room.getLect().setCatchStudent(false);

@@ -74,7 +74,7 @@ public class Student {
 	public void increaseEnergy(int number) {
 		energyLevel+=number;
 	}
-	public void DecreaseEnergy(int number) {
+	public void decreaseEnergy(int number) {
 		energyLevel-=number;
 	}
 
