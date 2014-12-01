@@ -3,12 +3,13 @@ package model.time;
 
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Observable;
 
 import controler.Controller;
 
 public class Time extends Observable implements Runnable{
-	private Controller createur;
+
 	private long all;
 	private int hour;
 	private int minutes;
@@ -18,14 +19,12 @@ public class Time extends Observable implements Runnable{
 	/**
 	 * Créer un objet gerant le temps
 	 */
-	public Time(Controller createur){
-		this.createur = createur;
-
+	public Time(){
 		Date d = new Date();
 		all = d.getTime();
-		hour = d.getHours();
-		minutes = d.getMinutes();
-		secondes = d.getSeconds();
+		hour = 8;
+		minutes = 0;
+		secondes = 0;
 		day = 0;
 		
 	}
@@ -49,7 +48,7 @@ public class Time extends Observable implements Runnable{
 	public void run() {
 		for(int i = 0 ; i < 10000; i++){
 			manageTime();
-			if(i%60 == 0) printTime();
+			//if(i%60 == 0) printTime();
 			try {Thread.sleep(10);}
 			catch (InterruptedException e) {e.printStackTrace();}
 		}
@@ -57,9 +56,18 @@ public class Time extends Observable implements Runnable{
 	
 	public void warnEachHour(){
 		String send = "dring";
-		
+		HashMap h = new HashMap();
+		h.put("lecture",send);
+		h.put("library",openLibrary());
 		setChanged();
-		notifyObservers(send);
+		notifyObservers(h);
+	}
+	
+	public boolean openLibrary(){
+		if(hour > 9 && hour < 12 ){
+
+			return true;
+		}else return false;
 	}
 	
 	@Override
@@ -70,7 +78,10 @@ public class Time extends Observable implements Runnable{
 	}
 	
 	public void printTime(){
-			System.out.println(this.toString());
+		System.out.println(this.toString());
+	}
+	public void lets(){
+		new Thread(this).start();
 	}
 
 }

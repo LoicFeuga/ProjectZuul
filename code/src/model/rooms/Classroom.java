@@ -1,5 +1,6 @@
 package model.rooms;
 
+import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -21,8 +22,8 @@ public class Classroom extends Room implements Observer{
 
 	@Override
 	public void update(Observable observable, Object o) {
-		String tmp = (String) o;
-		if(o.equals("dring")){
+		String tmp = (String) ((HashMap)o).get("lecture");
+		if(tmp.equals("dring")){
 			//switch lecture
 		}
 	}
